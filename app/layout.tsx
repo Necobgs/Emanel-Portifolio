@@ -3,6 +3,7 @@ import "./globals.css";
 import { getSiteUrl } from "@/lib/site";
 import { profileData } from "@/data/profile";
 import { RootJsonLd } from "@/components/seo/json-ld";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -80,6 +81,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#090A0F] text-[#F8FAFC] font-sans selection:bg-emerald-500/30 selection:text-emerald-300">
         {children}
+        <Analytics />
       </body>
     </html>
   );
