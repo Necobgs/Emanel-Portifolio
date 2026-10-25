@@ -14,6 +14,8 @@ export function RootJsonLd() {
     headline: profileData.headline,
     description: profileData.summary,
     url: siteUrl,
+    telephone: profileData.phone,
+    email: profileData.email,
     image: `${siteUrl}/icon.svg`,
     sameAs: [profileData.github, profileData.linkedin],
     address: {
@@ -25,20 +27,18 @@ export function RootJsonLd() {
     knowsAbout: [
       "Engenharia de Software",
       "Arquitetura de Backend",
-      "Automação de Processos (RPA)",
+      "Automação de Processos Robóticos (RPA)",
       "Sistemas Distribuídos",
       "Processamento Assíncrono",
       "Python",
       "Node.js",
       "NestJS",
-      "Golang",
       "RabbitMQ",
       "Redis",
       "PostgreSQL",
       "Docker",
       "Playwright",
-      "C#",
-      ".NET",
+      "TypeScript",
     ],
   };
 

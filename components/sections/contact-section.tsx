@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, FileDown, Copy, Check, Send, MapPin } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from "@/components/ui/icons";
 import { profileData } from "@/data/profile";
 import { Button } from "@/components/ui/button";
 
@@ -30,7 +30,7 @@ export function ContactSection() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
               <Send className="w-3.5 h-3.5" />
-              <span>Conexão & Oportunidades</span>
+              <span>Conexão &amp; Oportunidades</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#f1f3f7] tracking-tight">
@@ -39,8 +39,8 @@ export function ContactSection() {
 
             <p className="text-sm sm:text-base text-[#8e95a5] leading-relaxed max-w-lg">
               Estou disponível para novos projetos, consultoria técnica em backend e automação
-              ou oportunidades corporativas. Se você precisa de microsserviços em Golang/Node.js,
-              robôs resilientes em Python ou modernização de sistemas, entre em contato.
+              ou oportunidades corporativas. Se você precisa de mensageria com RabbitMQ,
+              APIs escaláveis em NestJS/Python ou robôs resilientes de automação, entre em contato.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -55,9 +55,14 @@ export function ContactSection() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-4">
+              <a href={profileData.whatsapp} target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="primary" leftIcon={<WhatsappIcon className="w-4 h-4" />}>
+                  Chamar no WhatsApp
+                </Button>
+              </a>
               <a href={`mailto:${profileData.email}`}>
-                <Button size="lg" variant="primary" leftIcon={<Mail className="w-4 h-4" />}>
-                  Enviar Mensagem
+                <Button size="lg" variant="secondary" leftIcon={<Mail className="w-4 h-4" />}>
+                  Enviar E-mail
                 </Button>
               </a>
               <a
@@ -121,8 +126,21 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <span className="text-[#525866]"># Redes profissionais</span>
-                  <div className="grid grid-cols-2 gap-2 mt-1">
+                  <span className="text-[#525866]"># Conexão rápida</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-1">
+                    <a
+                      href={profileData.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-3 rounded bg-[#0a0c10] border border-[#1b202e] hover:border-emerald-500/40 hover:bg-[#161b26] transition-all"
+                    >
+                      <span className="flex items-center gap-2 text-[#f1f3f7]">
+                        <WhatsappIcon className="w-4 h-4 text-emerald-400" />
+                        WhatsApp
+                      </span>
+                      <span className="text-[#525866] text-[10px]">↗</span>
+                    </a>
+
                     <a
                       href={profileData.linkedin}
                       target="_blank"

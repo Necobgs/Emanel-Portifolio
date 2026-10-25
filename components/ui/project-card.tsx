@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Cpu, CheckCircle2, ExternalLink } from "lucide-react";
+import { ArrowRight, Cpu, CheckCircle2, ExternalLink, Lock } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { ProjectDetail } from "@/data/projects";
 import { cn } from "@/lib/utils";
@@ -33,7 +33,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             </span>
           </div>
 
-          {/* Links Externos Opcionais */}
+          {/* Links Externos Opcionais ou Indicador de Sigilo */}
           <div className="flex items-center gap-2">
             {project.githubUrl && (
               <a
@@ -56,6 +56,15 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               >
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
+            )}
+            {project.isConfidential && (
+              <span
+                title="Projeto corporativo com código sob sigilo/NDA"
+                className="inline-flex items-center gap-1 text-[10px] font-mono text-[#525866]"
+              >
+                <Lock className="w-3 h-3 text-amber-500/70" />
+                <span>NDA</span>
+              </span>
             )}
           </div>
         </div>

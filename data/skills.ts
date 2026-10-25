@@ -180,7 +180,7 @@ export const skillsData: SkillGroup[] = [
       },
       {
         name: "Golang",
-        context: "Prática em concorrência (goroutines/channels) aplicada a projetos de alta performance.",
+        context: "Prática em concorrência (goroutines/canais) e cache geoespacial com Redis no projeto prático Move Fast.",
         level: "Aprendizado Complementar",
       },
     ],

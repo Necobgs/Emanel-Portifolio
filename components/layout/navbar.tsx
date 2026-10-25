@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { Terminal, Menu, X, ArrowRight, Download } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -50,8 +51,8 @@ export function Navbar() {
       <Container size="xl">
         <div className="flex items-center justify-between">
           {/* Marca Tipográfica */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"
             aria-label="Emanuel Borges de Oliveira — Início"
           >
@@ -63,10 +64,10 @@ export function Navbar() {
                 Emanuel Borges
               </span>
               <span className="font-mono text-[10px] text-[#525866] leading-none">
-                backend & rpa
+                backend &amp; rpa
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Navegação Desktop */}
           <nav

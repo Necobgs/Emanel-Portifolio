@@ -25,7 +25,7 @@ export const experienceData: ExperienceItem[] = [
     achievements: [
       "Desenvolvimento e evolução de portal interno full-stack com NestJS, PostgreSQL e Angular 14",
       "Construção de extensão para Google Chrome utilizando React e Vite para suporte aos fluxos operacionais",
-      "Mentoria técnica e estruturação de uma arquitetura de código padronizada e performática para robôs de automação",
+      "Mentoria técnica e estruturação de uma arquitetura padronizada para as dezenas de automações corporativas da equipe",
     ],
     techStack: ["Python", "NestJS", "PostgreSQL", "React", "Vite", "Angular 14", "Docker"],
   },
@@ -40,7 +40,7 @@ export const experienceData: ExperienceItem[] = [
     description:
       "Desenvolvimento de soluções de automação em Python e resolução de problemas analíticos de otimização de fluxo de trabalho.",
     achievements: [
-      "Construção de ferramentas de automação e robôs com foco em regras de negócio e confiabilidade",
+      "Construção e sustentação de dezenas de ferramentas de automação e robôs com execução diária, focados em regras de negócio e estabilidade",
       "Aplicação de raciocínio lógico avançado em cenários de alta complexidade e tratamento de exceções",
       "Aprimoramento contínuo da estabilidade e do tempo de resposta das rotinas automatizadas",
     ],

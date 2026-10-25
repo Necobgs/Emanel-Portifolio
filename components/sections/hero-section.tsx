@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ActionLink } from "@/components/ui/action-link";
 import { SystemBadge } from "@/components/ui/system-badge";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from "@/components/ui/icons";
 import { profileData } from "@/data/profile";
 import { HeroArchitectureFlow } from "./hero-architecture-flow";
 
@@ -61,28 +61,29 @@ export function HeroSection() {
               </span>
             </motion.div>
 
-            {/* Headline com forte hierarquia tipográfica */}
+            {/* Headline com forte hierarquia tipográfica e semântica SEO */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold tracking-tight text-[#f1f3f7] leading-[1.12]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-extrabold tracking-tight text-[#f1f3f7] leading-[1.15]"
             >
+              <span className="block text-xs sm:text-sm font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-3">
+                Emanuel Borges — Engenheiro Backend &amp; Automação RPA
+              </span>
               Construindo software que conecta{" "}
               <span className="text-emerald-400 font-mono">automação</span>,{" "}
               <span className="text-[#f1f3f7]">backend</span> e{" "}
               <span className="text-[#8e95a5]">negócio</span>.
             </motion.h1>
 
-            {/* Descrição Alinhada e Focada */}
+            {/* Descrição Alinhada com Stacks de Produção */}
             <motion.p
               variants={itemVariants}
               className="text-base sm:text-lg text-[#8e95a5] leading-relaxed max-w-2xl"
             >
-              Desenvolvedor de software focado em APIs, automação de processos e sistemas
-              confiáveis. Transformo problemas operacionais em soluções técnicas bem
-              estruturadas utilizando{" "}
+              Desenvolvedor em Criciúma/SC focado em APIs de alta resiliência, processamento assíncrono e automação corporativa. Transformo problemas operacionais em soluções técnicas bem estruturadas utilizando{" "}
               <span className="text-[#f1f3f7] font-mono font-medium">Python</span>,{" "}
-              <span className="text-[#f1f3f7] font-mono font-medium">Golang</span>,{" "}
-              <span className="text-[#f1f3f7] font-mono font-medium">NestJS</span> e{" "}
+              <span className="text-[#f1f3f7] font-mono font-medium">NestJS</span>,{" "}
+              <span className="text-[#f1f3f7] font-mono font-medium">RabbitMQ</span> e{" "}
               <span className="text-[#f1f3f7] font-mono font-medium">PostgreSQL</span>.
             </motion.p>
 
@@ -131,15 +132,24 @@ export function HeroSection() {
               >
                 linkedin.com/in/emanuel-bgs-dev
               </ActionLink>
+
+              <ActionLink
+                href={profileData.whatsapp}
+                external
+                variant="mono"
+                icon={<WhatsappIcon className="w-3.5 h-3.5" />}
+              >
+                WhatsApp Direto
+              </ActionLink>
             </motion.div>
           </motion.div>
 
-          {/* Coluna Direita: Elemento Visual Técnico com GSAP e SVG */}
+          {/* Coluna Direita: Topologia Arquitetural Animada */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-            className="lg:col-span-5 w-full"
+            transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
+            className="lg:col-span-5"
           >
             <HeroArchitectureFlow />
           </motion.div>

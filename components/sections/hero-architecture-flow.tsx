@@ -52,24 +52,22 @@ export function HeroArchitectureFlow() {
       ref={containerRef}
       className="relative w-full rounded-xl border border-[#1b202e] bg-[#10131b] p-5 sm:p-6 shadow-2xl font-mono text-xs"
     >
-      {/* Marcadores de canto estilo cruz técnica */}
-      <div className="absolute -top-1.5 -left-1.5 text-[#343d56] text-[10px] select-none">+</div>
-      <div className="absolute -top-1.5 -right-1.5 text-[#343d56] text-[10px] select-none">+</div>
-      <div className="absolute -bottom-1.5 -left-1.5 text-[#343d56] text-[10px] select-none">+</div>
-      <div className="absolute -bottom-1.5 -right-1.5 text-[#343d56] text-[10px] select-none">+</div>
+      {/* Marcadores de canto estilo cruz técnica (com aria-hidden para leitores de tela) */}
+      <div className="absolute -top-1.5 -left-1.5 text-[#343d56] text-[10px] select-none" aria-hidden="true">+</div>
+      <div className="absolute -top-1.5 -right-1.5 text-[#343d56] text-[10px] select-none" aria-hidden="true">+</div>
+      <div className="absolute -bottom-1.5 -left-1.5 text-[#343d56] text-[10px] select-none" aria-hidden="true">+</div>
+      <div className="absolute -bottom-1.5 -right-1.5 text-[#343d56] text-[10px] select-none" aria-hidden="true">+</div>
 
-      {/* Barra de Título Técnica */}
+      {/* Barra de Título Técnica com rotulagem honesta */}
       <div className="flex items-center justify-between pb-3.5 mb-5 border-b border-[#1b202e] text-[#8e95a5]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
           <span className="font-semibold text-[#f1f3f7] uppercase tracking-wider text-[11px]">
-            ARCH_TOPOLOGY :: JOB #{jobId}
+            TOPOLOGIA DE SISTEMA (ILUSTRATIVO)
           </span>
         </div>
         <div className="flex items-center gap-2 text-[10px] text-[#525866]">
-          <span className="tabular-nums">CYCLE: 18ms</span>
-          <span>•</span>
-          <span className="text-emerald-400 font-bold">STREAMING</span>
+          <span className="text-emerald-400 font-bold">EVENT STREAM #{jobId}</span>
         </div>
       </div>
 
@@ -79,6 +77,7 @@ export function HeroArchitectureFlow() {
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none stroke-[#1b202e]"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <line x1="20%" y1="22%" x2="50%" y2="22%" strokeWidth="1.5" strokeDasharray="3 3" />
           <line x1="50%" y1="22%" x2="80%" y2="22%" strokeWidth="1.5" />
@@ -108,7 +107,7 @@ export function HeroArchitectureFlow() {
             <div className={`text-xs font-bold ${activeNode === 0 ? "text-emerald-300" : "text-[#f1f3f7]"}`}>
               REST / Webhook
             </div>
-            <p className="text-[10px] text-[#525866]">FastAPI • NestJS</p>
+            <p className="text-[10px] text-[#525866]">NestJS • APIs</p>
           </div>
 
           {/* Node 2: Worker RPA & Automação */}
@@ -128,9 +127,9 @@ export function HeroArchitectureFlow() {
               />
             </div>
             <div className={`text-xs font-bold ${activeNode === 1 ? "text-emerald-300" : "text-[#f1f3f7]"}`}>
-              Python Headless
+              Python Worker
             </div>
-            <p className="text-[10px] text-[#525866]">Playwright • Scrapy</p>
+            <p className="text-[10px] text-[#525866]">Playwright • Selenium</p>
           </div>
 
           {/* Node 3: Fila de Tarefas & Concorrência */}
@@ -150,9 +149,9 @@ export function HeroArchitectureFlow() {
               />
             </div>
             <div className={`text-xs font-bold ${activeNode === 2 ? "text-emerald-300" : "text-[#f1f3f7]"}`}>
-              RabbitMQ / Channels
+              RabbitMQ + DLQ
             </div>
-            <p className="text-[10px] text-[#525866]">Controle de Concorrência</p>
+            <p className="text-[10px] text-[#525866]">ACK Manual • Retries</p>
           </div>
         </div>
 
@@ -175,11 +174,11 @@ export function HeroArchitectureFlow() {
               />
             </div>
             <div className={`text-xs font-bold ${activeNode === 3 ? "text-emerald-300" : "text-[#f1f3f7]"}`}>
-              Redis State & Locks
+              Redis State &amp; Locks
             </div>
             <div className="flex items-center justify-between text-[10px] text-[#525866] pt-1">
-              <span>TTL: 3600s</span>
-              <span className="text-emerald-400 tabular-nums">HIT_RATE: 99.4%</span>
+              <span>TTL &amp; Idempotência</span>
+              <span className="text-emerald-400">Lock Distribuído</span>
             </div>
           </div>
 
@@ -200,11 +199,11 @@ export function HeroArchitectureFlow() {
               />
             </div>
             <div className={`text-xs font-bold ${activeNode === 4 ? "text-emerald-300" : "text-[#f1f3f7]"}`}>
-              PostgreSQL 16
+              PostgreSQL
             </div>
             <div className="flex items-center justify-between text-[10px] text-[#525866] pt-1">
-              <span>ACID Committed</span>
-              <span className="text-[#8e95a5]">Index B-Tree</span>
+              <span>ACID Transacional</span>
+              <span className="text-[#8e95a5]">Auditoria &amp; Logs</span>
             </div>
           </div>
         </div>
@@ -214,11 +213,10 @@ export function HeroArchitectureFlow() {
       <div className="mt-4 pt-3 border-t border-[#1b202e] flex items-center justify-between text-[10px] text-[#525866]">
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-          <span>ZERO_DROP_POLICY: ON</span>
+          <span>SIMULAÇÃO ARQUITETURAL INTERATIVA</span>
         </div>
-        <div className="font-mono">
-          <span>UPTIME: </span>
-          <span className="text-[#f1f3f7] font-semibold tabular-nums">99.98%</span>
+        <div className="font-mono text-emerald-400/90">
+          PADRÃO ASSÍNCRONO RESILIENTE
         </div>
       </div>
     </div>

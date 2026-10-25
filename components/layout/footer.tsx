@@ -1,6 +1,6 @@
 import React from "react";
 import { Terminal, Mail, ArrowUp } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from "@/components/ui/icons";
 import { profileData } from "@/data/profile";
 
 export function Footer() {
@@ -22,7 +22,7 @@ export function Footer() {
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
             href={profileData.github}
             target="_blank"
@@ -42,6 +42,15 @@ export function Footer() {
             <LinkedinIcon className="w-4 h-4" />
           </a>
           <a
+            href={profileData.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp de Emanuel Borges de Oliveira"
+            className="p-2 rounded-lg bg-[#111520] border border-[#21293D] text-slate-400 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
+          >
+            <WhatsappIcon className="w-4 h-4" />
+          </a>
+          <a
             href={`mailto:${profileData.email}`}
             aria-label="E-mail de Emanuel Borges de Oliveira"
             className="p-2 rounded-lg bg-[#111520] border border-[#21293D] text-slate-400 hover:text-white hover:border-emerald-500/40 transition-colors"
@@ -49,7 +58,7 @@ export function Footer() {
             <Mail className="w-4 h-4" />
           </a>
           <a
-            href="#"
+            href="#main-content"
             aria-label="Voltar ao topo da página"
             className="p-2 rounded-lg bg-[#111520] border border-[#21293D] text-slate-400 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
           >

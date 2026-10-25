@@ -8,28 +8,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Emanuel Borges de Oliveira | Engenharia de Software & Automação RPA",
+    default: "Emanuel Borges | Engenheiro Backend & Automação RPA",
     template: "%s | Emanuel Borges de Oliveira",
   },
   description:
-    "Portfólio de Emanuel Borges de Oliveira — Engenheiro de Software Fullstack com foco em Backend de Alta Performance, Arquitetura de Filas com RabbitMQ e Automação de Processos (RPA).",
-  keywords: [
-    "Emanuel Borges de Oliveira",
-    "Engenheiro de Software",
-    "Backend Engineer",
-    "Automação RPA",
-    "Python",
-    "Golang",
-    "Node.js",
-    "NestJS",
-    "RabbitMQ",
-    "Redis",
-    "PostgreSQL",
-    "Docker",
-    "Playwright",
-    "Sistemas Distribuídos",
-    "Arquitetura de Software",
-  ],
+    "Engenheiro de Software em Criciúma/SC. Backend com NestJS e Python, mensageria com RabbitMQ e automação RPA com Playwright. Veja projetos e currículo.",
   authors: [{ name: profileData.name, url: profileData.github }],
   creator: profileData.name,
   publisher: profileData.name,
@@ -42,9 +25,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Emanuel Borges de Oliveira | Engenharia de Software & Automação RPA",
+    title: "Emanuel Borges | Engenheiro Backend & Automação RPA",
     description:
-      "Sistemas distribuídos, engenharia de backend resiliente, arquitetura assíncrona com RabbitMQ e automação corporativa.",
+      "Engenheiro de Software em Criciúma/SC. Backend com NestJS e Python, mensageria com RabbitMQ e automação RPA com Playwright.",
     url: "/",
     siteName: "Emanuel Borges de Oliveira — Portfólio de Engenharia",
     locale: "pt_BR",
@@ -52,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Emanuel Borges de Oliveira | Engenharia de Software & Automação RPA",
+    title: "Emanuel Borges | Engenheiro Backend & Automação RPA",
     description:
-      "Sistemas distribuídos, engenharia de backend resiliente, arquitetura assíncrona com RabbitMQ e automação corporativa.",
+      "Engenheiro de Software em Criciúma/SC. Backend com NestJS e Python, mensageria com RabbitMQ e automação RPA com Playwright.",
   },
   robots: {
     index: true,

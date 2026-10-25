@@ -13,6 +13,7 @@ import {
   Wrench,
   AlertTriangle,
   UserCheck,
+  Lock,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -128,25 +129,29 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               {project.summary}
             </p>
 
-            {/* Links Opcionais */}
-            {(project.githubUrl || project.liveUrl) && (
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="secondary" size="sm" leftIcon={<GithubIcon className="w-3.5 h-3.5" />}>
-                      Repositório no GitHub
-                    </Button>
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="primary" size="sm" rightIcon={<ExternalLink className="w-3.5 h-3.5" />}>
-                      Acessar Aplicação
-                    </Button>
-                  </a>
-                )}
-              </div>
-            )}
+            {/* Links / Indicador de Confidencialidade */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="secondary" size="sm" leftIcon={<GithubIcon className="w-3.5 h-3.5" />}>
+                    Repositório no GitHub
+                  </Button>
+                </a>
+              )}
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="primary" size="sm" rightIcon={<ExternalLink className="w-3.5 h-3.5" />}>
+                    Acessar Aplicação
+                  </Button>
+                </a>
+              )}
+              {project.isConfidential && (
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-mono bg-[#111520] text-[#8e95a5] border border-[#21293d]">
+                  <Lock className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Código proprietário corporativo sob sigilo/NDA</span>
+                </span>
+              )}
+            </div>
 
             {/* Tech Stack Pills */}
             <div className="pt-4 border-t border-[#1b202e] flex flex-wrap items-center gap-2">

@@ -4,12 +4,10 @@ import React from "react";
 import { motion } from "motion/react";
 import {
   Compass,
-  Zap,
-  TrendingUp,
-  MessageSquare,
   Wrench,
   Network,
   Award,
+  Zap,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SystemBadge } from "@/components/ui/system-badge";
@@ -17,12 +15,9 @@ import { aboutData } from "@/data/about";
 
 export function AboutSection() {
   const iconMap: Record<string, React.ReactNode> = {
-    "fast-learning": <Zap className="w-4 h-4 text-emerald-400" />,
-    "product-vision": <TrendingUp className="w-4 h-4 text-emerald-400" />,
-    communication: <MessageSquare className="w-4 h-4 text-emerald-400" />,
     "problem-solving": <Wrench className="w-4 h-4 text-emerald-400" />,
+    "code-standards": <Award className="w-4 h-4 text-emerald-400" />,
     "systemic-thinking": <Network className="w-4 h-4 text-emerald-400" />,
-    "continuous-improvement": <Award className="w-4 h-4 text-emerald-400" />,
   };
 
   return (
@@ -32,7 +27,7 @@ export function AboutSection() {
         <div className="max-w-3xl mb-14 space-y-3">
           <div className="flex items-center gap-2">
             <SystemBadge status="active" label="FILOSOFIA DE TRABALHO" code="01" />
-            <span className="text-xs font-mono text-[#8e95a5]">Sobre & Visão Técnica</span>
+            <span className="text-xs font-mono text-[#8e95a5]">Sobre &amp; Visão Técnica</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#f1f3f7] tracking-tight leading-tight">
@@ -49,7 +44,7 @@ export function AboutSection() {
           <div className="p-6 rounded-lg border border-[#1b202e] bg-[#10131b] space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 font-semibold uppercase tracking-wider">
               <Compass className="w-4 h-4" />
-              <span>Atuação em Backend & Automação</span>
+              <span>Atuação em Backend &amp; Automação</span>
             </div>
             <p className="text-sm text-[#f1f3f7] leading-relaxed">
               {aboutData.careerFocus}
@@ -67,23 +62,23 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Soft Skills por Exemplos de Comportamento */}
+        {/* Princípios de Engenharia e Postura Profissional */}
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#1b202e] pb-3">
             <div>
               <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">
-                Soft Skills Comportamentais
+                Princípios de Engenharia
               </span>
               <h3 className="text-lg font-bold text-white tracking-tight mt-0.5">
-                Postura Profissional & Dinâmica em Equipe
+                Postura Profissional &amp; Práticas de Equipe
               </h3>
             </div>
             <p className="text-xs font-mono text-[#525866]">
-              Exemplos práticos no dia a dia da engenharia
+              Atuação fundamentada em código sustentável e colaboração
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {aboutData.softSkills.map((skill) => (
               <motion.div
                 key={skill.id}

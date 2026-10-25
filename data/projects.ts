@@ -17,6 +17,7 @@ export interface ProjectDetail {
   category: ProjectCategory;
   status: "Em Produção" | "Concluído" | "Em Desenvolvimento" | "Estudo Aplicado";
   featured: boolean;
+  isConfidential?: boolean;
   context: string;
   problem: string;
   objective: string;
@@ -44,8 +45,9 @@ export const projectsData: ProjectDetail[] = [
     category: "Backend & Orquestração",
     status: "Em Produção",
     featured: true,
+    isConfidential: true,
     context:
-      "Em um cenário corporativo com dezenas de tarefas repetitivas e scripts independentes sem centralização, era necessário coordenar disparos, validar dependências e monitorar execuções de ponta a ponta.",
+      "Ambiente corporativo com dezenas de tarefas repetitivas e rotinas operacionais sem controle centralizado de estados ou dependências (código proprietário corporativo sob sigilo/NDA).",
     problem:
       "Ausência de visibilidade centralizada sobre a execução de automações. Rotinas eram executadas de forma dispersa, dificultando identificar se um robô falhou, se completou com sucesso ou se travou em loop, além da falta de relatórios unificados para tomada de decisão.",
     objective:
@@ -95,8 +97,9 @@ export const projectsData: ProjectDetail[] = [
     category: "RPA & Automação",
     status: "Em Produção",
     featured: true,
+    isConfidential: true,
     context:
-      "Operações corporativas dependentes de sistemas web legados e interfaces externas que sofrem alterações frequentes de leiaute e instabilidades transitórias de rede.",
+      "Operações corporativas dependentes de sistemas web legados e interfaces externas que sofrem alterações frequentes de leiaute e instabilidades transitórias de rede (código proprietário corporativo sob sigilo/NDA).",
     problem:
       "Alto índice de retrabalho ao criar novos robôs do zero. Cada desenvolvedor implementava tratamentos de exceção, retentativas e chamadas HTTP de forma divergente, resultando em robôs frágeis e manutenções emergenciais frequentes.",
     objective:
@@ -137,12 +140,104 @@ export const projectsData: ProjectDetail[] = [
     diagramType: "rpa-engine",
   },
   {
+    slug: "move-fast-backend",
+    title: "Move Fast — Backend Otimizado para Mobilidade com Go & Redis",
+    tagline:
+      "Serviço backend de alto desempenho com geolocalização e cache in-memory em Go.",
+    summary:
+      "Projeto prático de código aberto desenvolvido para aplicar conceitos avançados além do CRUD tradicional: cache e geolocalização com Redis, comunicação em tempo real e concorrência nativa em Go.",
+    category: "Backend & Orquestração",
+    status: "Concluído",
+    featured: true,
+    githubUrl: "https://github.com/Necobgs/move-fast-backend",
+    context:
+      "Desenvolvimento de um ecossistema backend para mobilidade urbana, visando alta vazão, latência reduzida e estudo prático aprofundado da linguagem Go.",
+    problem:
+      "Aplicações de mobilidade exigem processamento intensivo de geolocalização e respostas rápidas. O modelo tradicional de persistência direta em banco relacional para cada atualização de coordenadas gera gargalos severos de I/O.",
+    objective:
+      "Construir uma API em Go capaz de processar coordenadas geográficas em tempo real, utilizando Redis para consultas geoespaciais eficientes e armazenamento em cache de condutores e passageiros.",
+    solution:
+      "Construção de uma API em Go utilizando goroutines para concorrência leve. O Redis foi adotado para comandos geoespaciais e cache de alta velocidade, mantendo dados efêmeros em memória para garantir latência mínima.",
+    contribution:
+      "Concepção e implementação completa da API em Go, configuração dos comandos geoespaciais no Redis, modelagem dos contratos REST e disponibilização do código fonte público no GitHub.",
+    architectureHighlights: [
+      "Consultas geoespaciais de alta performance com comandos nativos do Redis",
+      "Processamento concorrente e leve com goroutines na linguagem Go",
+      "Camada de cache in-memory para redução drástica de I/O em disco",
+      "Código fonte 100% aberto e documentado no GitHub",
+    ],
+    technicalDecisions: [
+      {
+        title: "Adoção de Go para o Backend",
+        rationale:
+          "Permitiu explorar concorrência nativa, tipagem estática e compilação para binário único com consumo mínimo de memória.",
+      },
+      {
+        title: "Redis Geoespacial",
+        rationale:
+          "Eliminou cálculos matemáticos pesados de raio de distância na camada de aplicação, delegando as buscas de proximidade diretamente ao Redis.",
+      },
+    ],
+    challengesAndLearnings: [
+      "Domínio de ponteiros, canais e estruturas de dados idiomáticas em Go.",
+      "Gerenciamento atômico de chaves e TTL em cache distribuído.",
+    ],
+    techStack: ["Go", "Redis", "Docker", "Geolocalização", "APIs REST"],
+    diagramType: "async-queues",
+  },
+  {
+    slug: "gestao-instituto-diomicio-freitas",
+    title: "Sistema de Gestão Interna para o Instituto Diomício Freitas",
+    tagline:
+      "Backend modular em NestJS e PostgreSQL desenvolvido para a ONG IEEDF.",
+    summary:
+      "Projeto social desenvolvido em parceria com a ESUCRI para centralizar os registros acadêmicos e assistenciais dos alunos do Instituto Diomício Freitas, eliminando planilhas manuais e inconsistências.",
+    category: "Backend & Orquestração",
+    status: "Concluído",
+    featured: true,
+    githubUrl: "https://github.com/Necobgs/instituto-diomicio-freitas-backend",
+    context:
+      "O Instituto Diomício Freitas atende alunos com necessidades especiais e gerenciava informações de forma descentralizada em planilhas, dificultando o acompanhamento pedagógico e assistencial.",
+    problem:
+      "Inconsistências em registros de matrícula, histórico de atendimentos disperso e retrabalho manual para consolidar dados exigidos por órgãos conveniados.",
+    objective:
+      "Desenvolver um backend centralizado, seguro e auditável para organizar o cadastro e histórico pedagógico dos alunos da instituição.",
+    solution:
+      "API desenvolvida em NestJS com TypeScript e PostgreSQL. Implementação de validação rigorosa de dados via DTOs, migrações automatizadas e relatórios consolidados para a equipe administrativa.",
+    contribution:
+      "Arquitetura do backend em NestJS, modelagem das entidades relacionais no PostgreSQL, implementação da camada de autenticação/autorização e entrega do código em repositório aberto.",
+    architectureHighlights: [
+      "Arquitetura modular em NestJS com validação de dados via DTOs",
+      "Modelagem relacional e integridade transacional no PostgreSQL",
+      "Controle de acesso seguro e histórico auditável de alterações",
+      "Código fonte 100% aberto e auditável no GitHub",
+    ],
+    technicalDecisions: [
+      {
+        title: "NestJS & TypeScript",
+        rationale:
+          "Proporcionou uma estrutura corporativa robusta com injeção de dependência e tipagem estrita de contratos de dados.",
+      },
+      {
+        title: "PostgreSQL Transacional",
+        rationale:
+          "Garantia de integridade referencial para dados acadêmicos e históricos de atendimento sensíveis.",
+      },
+    ],
+    challengesAndLearnings: [
+      "Mapeamento de requisitos com usuários reais da ONG para atender necessidades práticas do balcão de atendimento.",
+      "Estruturação de consultas eficientes com relacionamentos múltiplos em banco relacional.",
+    ],
+    techStack: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Docker"],
+    diagramType: "orchestration",
+  },
+  {
     slug: "arquitetura-processamento-assincrono",
     title: "Arquitetura de Processamento Assíncrono & Tolerância a Falhas",
     tagline:
       "Padrões de mensageria com RabbitMQ, Dead-Letter Queues e controle estrito de concorrência.",
     summary:
-      "Aprofundamento técnico sobre o desenho de filas distribuídas, políticas de descarte seguro, confirmação manual de entrega e resiliência transacional sob alta carga.",
+      "Estudo arquitetural aplicado sobre o desenho de filas distribuídas, políticas de descarte seguro, confirmação manual de entrega (ACK) e resiliência transacional sob alta carga.",
     category: "Arquitetura & Filas",
     status: "Estudo Aplicado",
     featured: true,
