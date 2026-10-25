@@ -12,11 +12,50 @@ export interface ProjectCardProps {
   className?: string;
 }
 
+const categoryStyles: Record<
+  string,
+  { badge: string; iconColor: string; hoverBorder: string; hoverShadow: string }
+> = {
+  "Backend & Orquestração": {
+    badge: "bg-cyan-950/40 text-cyan-300 border-cyan-500/30",
+    iconColor: "text-cyan-400",
+    hoverBorder: "hover:border-cyan-500/50",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(0,242,254,0.12)]",
+  },
+  "RPA & Automação": {
+    badge: "bg-emerald-950/40 text-emerald-300 border-emerald-500/30",
+    iconColor: "text-emerald-400",
+    hoverBorder: "hover:border-emerald-500/50",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(16,185,129,0.12)]",
+  },
+  "Arquitetura & Filas": {
+    badge: "bg-indigo-950/40 text-indigo-300 border-indigo-500/30",
+    iconColor: "text-indigo-400",
+    hoverBorder: "hover:border-indigo-500/50",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(99,102,241,0.12)]",
+  },
+  "Desktop & .NET": {
+    badge: "bg-purple-950/40 text-purple-300 border-purple-500/30",
+    iconColor: "text-purple-400",
+    hoverBorder: "hover:border-purple-500/50",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(168,85,247,0.12)]",
+  },
+};
+
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const theme = categoryStyles[project.category] || {
+    badge: "bg-cyan-950/40 text-cyan-300 border-cyan-500/30",
+    iconColor: "text-cyan-400",
+    hoverBorder: "hover:border-cyan-500/50",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(0,242,254,0.12)]",
+  };
+
   return (
     <article
       className={cn(
-        "group relative flex flex-col justify-between rounded-lg border border-[#1b202e] bg-[#10131b] p-6 hover:border-[#252c3f] transition-all duration-200",
+        "group relative flex flex-col justify-between rounded-xl border border-white/[0.08] cinematic-surface p-6 sm:p-7 transition-all duration-300",
+        theme.hoverBorder,
+        theme.hoverShadow,
         className
       )}
     >
@@ -24,11 +63,11 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         {/* Cabeçalho de Categorias e Links */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-[#161b26] text-emerald-300 border border-[#252c3f]">
-              <Cpu className="w-3 h-3 text-emerald-400" />
+            <span className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-medium border", theme.badge)}>
+              <Cpu className={cn("w-3 h-3", theme.iconColor)} />
               {project.category}
             </span>
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono text-[#8e95a5] bg-[#0a0c10] border border-[#1b202e]">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono text-slate-400 bg-[#06080F]/80 border border-white/[0.06]">
               ● {project.status}
             </span>
           </div>
@@ -41,9 +80,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Código fonte de ${project.title}`}
-                className="p-1 rounded text-[#8e95a5] hover:text-[#f1f3f7] hover:bg-[#161b26] transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors"
               >
-                <GithubIcon className="w-3.5 h-3.5" />
+                <GithubIcon className="w-4 h-4" />
               </a>
             )}
             {project.liveUrl && (
@@ -52,17 +91,17 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Acessar ${project.title}`}
-                className="p-1 rounded text-[#8e95a5] hover:text-emerald-400 hover:bg-[#161b26] transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-white/[0.08] transition-colors"
               >
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="w-4 h-4" />
               </a>
             )}
             {project.isConfidential && (
               <span
                 title="Projeto corporativo com código sob sigilo/NDA"
-                className="inline-flex items-center gap-1 text-[10px] font-mono text-[#525866]"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono text-amber-400 bg-amber-950/30 border border-amber-500/30"
               >
-                <Lock className="w-3 h-3 text-amber-500/70" />
+                <Lock className="w-3 h-3 text-amber-400" />
                 <span>NDA</span>
               </span>
             )}
@@ -70,30 +109,30 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         </div>
 
         {/* Título & Tagline */}
-        <h3 className="text-lg sm:text-xl font-bold text-[#f1f3f7] group-hover:text-emerald-300 transition-colors tracking-tight">
+        <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-200 transition-colors tracking-tight">
           <Link href={`/projects/${project.slug}`} className="hover:underline underline-offset-4">
             {project.title}
           </Link>
         </h3>
-        <p className="mt-1 text-xs font-mono font-medium text-emerald-400/90">
+        <p className="mt-1 text-xs font-mono font-medium text-emerald-400/95">
           {project.tagline}
         </p>
 
         {/* Resumo */}
-        <p className="mt-3 text-xs sm:text-sm text-[#8e95a5] leading-relaxed">
+        <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
           {project.summary}
         </p>
 
         {/* Destaques de Engenharia */}
-        <div className="mt-5 space-y-2 pt-4 border-t border-[#181d2a]">
-          <span className="text-[10px] font-mono text-[#525866] uppercase tracking-wider block font-semibold">
+        <div className="mt-5 space-y-2 pt-4 border-t border-white/[0.08]">
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-semibold">
             Destaques de Arquitetura:
           </span>
           <ul className="space-y-1.5">
             {project.architectureHighlights.slice(0, 3).map((highlight, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-2 text-xs text-[#8e95a5] leading-normal"
+                className="flex items-start gap-2 text-xs text-slate-300 leading-normal"
               >
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                 <span>{highlight}</span>
@@ -103,13 +142,13 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="mt-6 pt-5 border-t border-[#181d2a] space-y-4">
+      <div className="mt-6 pt-5 border-t border-white/[0.08] space-y-4">
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-1.5">
           {project.techStack.map((tech, idx) => (
             <span
               key={idx}
-              className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#0a0c10] text-[#8e95a5] border border-[#1b202e]"
+              className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-[#06080F]/80 text-slate-300 border border-white/[0.06]"
             >
               {tech}
             </span>
@@ -120,7 +159,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <div className="pt-2">
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-400 hover:text-emerald-300 group-hover:translate-x-1 transition-all"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition-all"
           >
             <span>Ver Estudo de Caso</span>
             <ArrowRight className="w-3.5 h-3.5" />

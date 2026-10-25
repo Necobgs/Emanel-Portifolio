@@ -62,7 +62,7 @@ export default function RootLayout({
       <head>
         <RootJsonLd />
       </head>
-      <body className="min-h-full flex flex-col bg-[#090A0F] text-[#F8FAFC] font-sans selection:bg-emerald-500/30 selection:text-emerald-300">
+      <body className="min-h-full flex flex-col bg-[#06080F] text-[#F8FAFC] font-sans selection:bg-cyan-500/25 selection:text-cyan-200">
         {children}
         <SpeedInsights />
       </body>

@@ -10,7 +10,7 @@ import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0a0c10] text-[#f1f3f7] selection:bg-emerald-500/25 selection:text-emerald-300">
+    <div className="min-h-screen bg-[#06080F] text-slate-100 selection:bg-cyan-500/25 selection:text-cyan-200">
       <Navbar />
       <main id="main-content">
         <HeroSection />

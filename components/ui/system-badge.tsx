@@ -18,16 +18,16 @@ export function SystemBadge({
 }: SystemBadgeProps) {
   const statusStyles = {
     active: {
-      dot: "bg-emerald-400 shadow-[0_0_6px_#34d399]",
-      wrapper: "bg-[#101915] border-[#1d3326] text-emerald-300",
+      dot: "bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]",
+      wrapper: "bg-emerald-950/40 border-emerald-500/30 text-emerald-300",
     },
     neutral: {
-      dot: "bg-slate-400",
-      wrapper: "bg-[#11141c] border-[#22283a] text-slate-300",
+      dot: "bg-cyan-400 shadow-[0_0_8px_rgba(0,242,254,0.6)]",
+      wrapper: "bg-cyan-950/40 border-cyan-500/30 text-cyan-300",
     },
     warning: {
-      dot: "bg-amber-400 shadow-[0_0_6px_#fbbf24]",
-      wrapper: "bg-[#1c1810] border-[#382d18] text-amber-300",
+      dot: "bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]",
+      wrapper: "bg-amber-950/40 border-amber-500/30 text-amber-300",
     },
   };
 
@@ -36,7 +36,7 @@ export function SystemBadge({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 px-2.5 py-1 rounded border font-mono text-[11px] select-none",
+        "inline-flex items-center gap-2 px-2.5 py-1 rounded-full border font-mono text-[11px] select-none shadow-sm",
         current.wrapper,
         className
       )}
@@ -48,7 +48,7 @@ export function SystemBadge({
         <span className={cn("relative inline-flex rounded-full h-2 w-2", current.dot)} />
       </span>
       <span className="font-medium tracking-tight">{label}</span>
-      {code && <span className="text-[#8e95a5] font-normal">[{code}]</span>}
+      {code && <span className="text-slate-400 font-normal">[{code}]</span>}
     </div>
   );
 }

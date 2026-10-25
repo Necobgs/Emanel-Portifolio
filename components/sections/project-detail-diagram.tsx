@@ -8,55 +8,57 @@ export interface ProjectDetailDiagramProps {
 export function ProjectDetailDiagram({ type = "orchestration" }: ProjectDetailDiagramProps) {
   if (type === "orchestration") {
     return (
-      <div className="rounded-lg border border-[#1b202e] bg-[#10131b] p-5 sm:p-6 font-mono text-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#1b202e] text-[#8e95a5]">
-          <span className="text-[11px] font-bold text-[#f1f3f7] uppercase tracking-wider">
+      <div className="cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-7 font-mono text-xs space-y-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-slate-400">
+          <span className="text-[11px] font-bold text-white uppercase tracking-wider">
             Topologia do Sistema: Orquestração e Mensageria
           </span>
-          <span className="text-emerald-400 text-[10px]">DIAGRAMA ARQUITETURAL</span>
+          <span className="text-cyan-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-950/40 border border-cyan-500/30">
+            DIAGRAMA ARQUITETURAL
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 relative z-10">
-          <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-            <span className="text-[10px] text-[#525866] block">01. API & GESTÃO</span>
-            <div className="font-bold text-[#f1f3f7] flex items-center gap-1.5">
-              <Server className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5 hover:border-cyan-500/30 transition-all">
+            <span className="text-[10px] text-cyan-400 block font-bold">01. API &amp; GESTÃO</span>
+            <div className="font-bold text-white flex items-center gap-1.5">
+              <Server className="w-3.5 h-3.5 text-cyan-400" />
               <span>NestJS App</span>
             </div>
-            <p className="text-[10px] text-[#8e95a5]">Agendador e Controllers</p>
+            <p className="text-[10px] text-slate-400">Agendador e Controllers</p>
           </div>
 
-          <div className="p-3 rounded border border-emerald-500/40 bg-[#101915] space-y-1">
-            <span className="text-[10px] text-emerald-400 block font-bold">02. MENSAGERIA</span>
-            <div className="font-bold text-emerald-300 flex items-center gap-1.5">
+          <div className="p-3.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 space-y-1.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <span className="text-[10px] text-emerald-300 block font-bold">02. MENSAGERIA</span>
+            <div className="font-bold text-emerald-200 flex items-center gap-1.5">
               <RefreshCw className="w-3.5 h-3.5 text-emerald-400" />
               <span>RabbitMQ</span>
             </div>
-            <p className="text-[10px] text-emerald-500/80">Filas & Buffers Assíncronos</p>
+            <p className="text-[10px] text-emerald-400/90">Filas &amp; Buffers Assíncronos</p>
           </div>
 
-          <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-            <span className="text-[10px] text-[#525866] block">03. EXECUÇÃO</span>
-            <div className="font-bold text-[#f1f3f7] flex items-center gap-1.5">
+          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5 hover:border-emerald-500/30 transition-all">
+            <span className="text-[10px] text-emerald-400 block font-bold">03. EXECUÇÃO</span>
+            <div className="font-bold text-white flex items-center gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-emerald-400" />
               <span>Python Workers</span>
             </div>
-            <p className="text-[10px] text-[#8e95a5]">Processamento dos Robôs</p>
+            <p className="text-[10px] text-slate-400">Processamento dos Robôs</p>
           </div>
 
-          <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-            <span className="text-[10px] text-[#525866] block">04. ESTADOS & DADOS</span>
-            <div className="font-bold text-[#f1f3f7] flex items-center gap-1.5">
-              <Database className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Redis & Postgres</span>
+          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5 hover:border-sky-500/30 transition-all">
+            <span className="text-[10px] text-sky-400 block font-bold">04. ESTADOS &amp; DADOS</span>
+            <div className="font-bold text-white flex items-center gap-1.5">
+              <Database className="w-3.5 h-3.5 text-sky-400" />
+              <span>Redis &amp; Postgres</span>
             </div>
-            <p className="text-[10px] text-[#8e95a5]">Cache rápido e auditoria</p>
+            <p className="text-[10px] text-slate-400">Cache rápido e auditoria</p>
           </div>
         </div>
 
-        <div className="pt-2 text-[10px] text-[#525866] border-t border-[#181d2a] flex justify-between">
+        <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Fluxo: Requisição HTTP → Fila de Despacho → Worker em Background → Registro de Estado</span>
-          <span>Desacoplamento: 100%</span>
+          <span className="text-cyan-400 font-semibold">Desacoplamento: 100%</span>
         </div>
       </div>
     );
@@ -64,37 +66,39 @@ export function ProjectDetailDiagram({ type = "orchestration" }: ProjectDetailDi
 
   if (type === "rpa-engine") {
     return (
-      <div className="rounded-lg border border-[#1b202e] bg-[#10131b] p-5 sm:p-6 font-mono text-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#1b202e] text-[#8e95a5]">
-          <span className="text-[11px] font-bold text-[#f1f3f7] uppercase tracking-wider">
+      <div className="cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-7 font-mono text-xs space-y-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-slate-400">
+          <span className="text-[11px] font-bold text-white uppercase tracking-wider">
             Arquitetura de Resiliência: Ciclo do Robô RPA
           </span>
-          <span className="text-emerald-400 text-[10px]">DIAGRAMA DEFENSIVO</span>
+          <span className="text-emerald-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-950/40 border border-emerald-500/30">
+            DIAGRAMA DEFENSIVO
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-            <span className="text-[10px] text-[#525866] block">FASE 1: CONTEXTO</span>
-            <div className="font-bold text-[#f1f3f7]">Session & Auth Handler</div>
-            <p className="text-[10px] text-[#8e95a5]">Validação de credenciais e injeção de tokens</p>
+          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
+            <span className="text-[10px] text-cyan-400 block font-bold">FASE 1: CONTEXTO</span>
+            <div className="font-bold text-white">Session &amp; Auth Handler</div>
+            <p className="text-[10px] text-slate-400">Validação de credenciais e injeção de tokens</p>
           </div>
 
-          <div className="p-3 rounded border border-emerald-500/40 bg-[#101915] space-y-1">
-            <span className="text-[10px] text-emerald-400 block font-bold">FASE 2: NAVEGAÇÃO</span>
-            <div className="font-bold text-emerald-300">Playwright Adapter</div>
-            <p className="text-[10px] text-emerald-500/80">Esperas explícitas de DOM e retry com backoff</p>
+          <div className="p-3.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 space-y-1.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <span className="text-[10px] text-emerald-300 block font-bold">FASE 2: NAVEGAÇÃO</span>
+            <div className="font-bold text-emerald-200">Playwright Adapter</div>
+            <p className="text-[10px] text-emerald-400/90">Esperas explícitas de DOM e retry com backoff</p>
           </div>
 
-          <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-            <span className="text-[10px] text-[#525866] block">FASE 3: TELEMETRIA</span>
-            <div className="font-bold text-[#f1f3f7]">Structured JSON Logs</div>
-            <p className="text-[10px] text-[#8e95a5]">Emissão de métricas e status de término</p>
+          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
+            <span className="text-[10px] text-sky-400 block font-bold">FASE 3: TELEMETRIA</span>
+            <div className="font-bold text-white">Structured JSON Logs</div>
+            <p className="text-[10px] text-slate-400">Emissão de métricas e status de término</p>
           </div>
         </div>
 
-        <div className="pt-2 text-[10px] text-[#525866] border-t border-[#181d2a] flex justify-between">
+        <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Padrão adotado: Page Object + Decorators de Repetição com Jitter</span>
-          <span>Taxa de Recuperação: Alta</span>
+          <span className="text-emerald-400 font-semibold">Taxa de Recuperação: Alta</span>
         </div>
       </div>
     );
@@ -102,83 +106,87 @@ export function ProjectDetailDiagram({ type = "orchestration" }: ProjectDetailDi
 
   if (type === "async-queues") {
     return (
-      <div className="rounded-lg border border-[#1b202e] bg-[#10131b] p-5 sm:p-6 font-mono text-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#1b202e] text-[#8e95a5]">
-          <span className="text-[11px] font-bold text-[#f1f3f7] uppercase tracking-wider">
+      <div className="cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-7 font-mono text-xs space-y-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-slate-400">
+          <span className="text-[11px] font-bold text-white uppercase tracking-wider">
             Fluxo de Filas: Roteamento Seguro e Dead-Letter Queue
           </span>
-          <span className="text-emerald-400 text-[10px]">TOLERÂNCIA A FALHAS</span>
+          <span className="text-cyan-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-950/40 border border-cyan-500/30">
+            TOLERÂNCIA A FALHAS
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-            <span className="text-[10px] text-[#525866] block">ENTRADA</span>
-            <div className="font-bold text-[#f1f3f7]">Fila Principal (Main Queue)</div>
-            <p className="text-[10px] text-[#8e95a5]">Distribuição balanceada com ACK manual</p>
+          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
+            <span className="text-[10px] text-cyan-400 block font-bold">ENTRADA</span>
+            <div className="font-bold text-white">Fila Principal (Main Queue)</div>
+            <p className="text-[10px] text-slate-400">Distribuição balanceada com ACK manual</p>
           </div>
 
-          <div className="p-3 rounded border border-emerald-500/40 bg-[#101915] space-y-1">
-            <span className="text-[10px] text-emerald-400 block font-bold">PROCESSAMENTO</span>
-            <div className="font-bold text-emerald-300">Worker Consumer</div>
-            <p className="text-[10px] text-emerald-500/80">3 retentativas com backoff exponencial</p>
+          <div className="p-3.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 space-y-1.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <span className="text-[10px] text-emerald-300 block font-bold">PROCESSAMENTO</span>
+            <div className="font-bold text-emerald-200">Worker Consumer</div>
+            <p className="text-[10px] text-emerald-400/90">3 retentativas com backoff exponencial</p>
           </div>
 
-          <div className="p-3 rounded border border-amber-500/30 bg-[#1c1810] space-y-1">
-            <span className="text-[10px] text-amber-400 block font-bold flex items-center gap-1">
-              <ShieldAlert className="w-3 h-3" />
+          <div className="p-3.5 rounded-lg border border-amber-500/40 bg-amber-950/40 space-y-1.5 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+            <span className="text-[10px] text-amber-300 block font-bold flex items-center gap-1">
+              <ShieldAlert className="w-3 h-3 text-amber-400" />
               QUARANTINE
             </span>
-            <div className="font-bold text-amber-300">Dead-Letter Queue (DLQ)</div>
-            <p className="text-[10px] text-amber-400/80">Isolamento de mensagens anômalas</p>
+            <div className="font-bold text-amber-200">Dead-Letter Queue (DLQ)</div>
+            <p className="text-[10px] text-amber-400/90">Isolamento de mensagens anômalas</p>
           </div>
         </div>
 
-        <div className="pt-2 text-[10px] text-[#525866] border-t border-[#181d2a] flex justify-between">
+        <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Garantia: Mensagens defeituosas nunca bloqueiam o fluxo principal</span>
-          <span>Auditoria: Preservada</span>
+          <span className="text-emerald-400 font-semibold">Auditoria: Preservada</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-lg border border-[#1b202e] bg-[#10131b] p-5 sm:p-6 font-mono text-xs space-y-4">
-      <div className="flex items-center justify-between pb-3 border-b border-[#1b202e] text-[#8e95a5]">
-        <span className="text-[11px] font-bold text-[#f1f3f7] uppercase tracking-wider">
+    <div className="cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-7 font-mono text-xs space-y-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-slate-400">
+        <span className="text-[11px] font-bold text-white uppercase tracking-wider">
           Arquitetura MVVM Desktop: Aplicação Local em C#
         </span>
-        <span className="text-emerald-400 text-[10px]">PADRÃO CLIENTE LOCAL</span>
+        <span className="text-cyan-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-950/40 border border-cyan-500/30">
+          PADRÃO CLIENTE LOCAL
+        </span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-          <span className="text-[10px] text-[#525866] block">CAMADA DE APRESENTAÇÃO</span>
-          <div className="font-bold text-[#f1f3f7] flex items-center gap-1.5">
-            <Monitor className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
+          <span className="text-[10px] text-cyan-400 block font-bold">CAMADA DE APRESENTAÇÃO</span>
+          <div className="font-bold text-white flex items-center gap-1.5">
+            <Monitor className="w-3.5 h-3.5 text-cyan-400" />
             <span>WPF UI / XAML</span>
           </div>
-          <p className="text-[10px] text-[#8e95a5]">Interface Fluent Design com suporte a tema escuro</p>
+          <p className="text-[10px] text-slate-400">Interface Fluent Design com suporte a tema escuro</p>
         </div>
 
-        <div className="p-3 rounded border border-emerald-500/40 bg-[#101915] space-y-1">
-          <span className="text-[10px] text-emerald-400 block font-bold">LÓGICA & VIEWMODELS</span>
-          <div className="font-bold text-emerald-300">CommunityToolkit.Mvvm</div>
-          <p className="text-[10px] text-emerald-500/80">Bindings bidirecionais e comandos assíncronos</p>
+        <div className="p-3.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 space-y-1.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+          <span className="text-[10px] text-emerald-300 block font-bold">LÓGICA &amp; VIEWMODELS</span>
+          <div className="font-bold text-emerald-200">CommunityToolkit.Mvvm</div>
+          <p className="text-[10px] text-emerald-400/90">Bindings bidirecionais e comandos assíncronos</p>
         </div>
 
-        <div className="p-3 rounded border border-[#1b202e] bg-[#0a0c10] space-y-1">
-          <span className="text-[10px] text-[#525866] block">PERSISTÊNCIA EMBARCADA</span>
-          <div className="font-bold text-[#f1f3f7] flex items-center gap-1.5">
-            <Database className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
+          <span className="text-[10px] text-sky-400 block font-bold">PERSISTÊNCIA EMBARCADA</span>
+          <div className="font-bold text-white flex items-center gap-1.5">
+            <Database className="w-3.5 h-3.5 text-sky-400" />
             <span>SQLite + EF Core</span>
           </div>
-          <p className="text-[10px] text-[#8e95a5]">Armazenamento local rápido e 100% offline</p>
+          <p className="text-[10px] text-slate-400">Armazenamento local rápido e 100% offline</p>
         </div>
       </div>
 
-      <div className="pt-2 text-[10px] text-[#525866] border-t border-[#181d2a] flex justify-between">
+      <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
         <span>Arquitetura em camadas desacoplada e independente de conexão de internet</span>
-        <span>Portabilidade: Total</span>
+        <span className="text-cyan-400 font-semibold">Portabilidade: Total</span>
       </div>
     </div>
   );

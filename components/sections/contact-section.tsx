@@ -17,7 +17,17 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contato" className="py-24 border-t border-[#1b202e] relative overflow-hidden bg-[#0a0c10]">
+    <section id="contato" className="py-24 border-t border-white/[0.06] relative overflow-hidden bg-[#06080F]">
+      {/* Luzes atmosféricas de fundo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 right-1/4 w-[600px] h-[400px] bg-gradient-to-bl from-cyan-500/10 via-indigo-600/5 to-transparent blur-[150px] rounded-full"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-24 left-1/4 w-[550px] h-[400px] bg-gradient-to-tr from-teal-500/10 via-sky-500/5 to-transparent blur-[150px] rounded-full"
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Coluna Esquerda */}
@@ -28,28 +38,35 @@ export function ContactSection() {
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <Send className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/40 text-cyan-300 border border-cyan-500/30">
+              <Send className="w-3.5 h-3.5 text-cyan-400" />
               <span>Conexão &amp; Oportunidades</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#f1f3f7] tracking-tight">
-              Vamos construir arquiteturas robustas juntos?
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Vamos construir{" "}
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-teal-300 bg-clip-text text-transparent">
+                arquiteturas robustas juntos?
+              </span>
             </h2>
 
-            <p className="text-sm sm:text-base text-[#8e95a5] leading-relaxed max-w-lg">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg">
               Estou disponível para novos projetos, consultoria técnica em backend e automação
               ou oportunidades corporativas. Se você precisa de mensageria com RabbitMQ,
               APIs escaláveis em NestJS/Python ou robôs resilientes de automação, entre em contato.
             </p>
 
             <div className="space-y-3 pt-2">
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-[#8e95a5] font-mono">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300 font-mono">
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <MapPin className="w-3.5 h-3.5" />
+                </div>
                 <span>{profileData.location}</span>
               </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-[#8e95a5] font-mono">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300 font-mono">
+                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
                 <span>{profileData.email}</span>
               </div>
             </div>
@@ -73,7 +90,7 @@ export function ContactSection() {
                 <Button
                   size="lg"
                   variant="outline"
-                  leftIcon={<FileDown className="w-4 h-4 text-[#8e95a5]" />}
+                  leftIcon={<FileDown className="w-4 h-4 text-slate-400" />}
                 >
                   Baixar Currículo (PDF)
                 </Button>
@@ -89,32 +106,32 @@ export function ContactSection() {
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="lg:col-span-6"
           >
-            <div className="rounded-lg border border-[#1b202e] bg-[#10131b] p-6 sm:p-8 shadow-2xl font-mono text-xs">
+            <div className="cinematic-surface rounded-xl border border-white/[0.08] p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.6)] font-mono text-xs">
               {/* Window Header */}
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#1b202e]">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.08]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
-                  <span className="ml-2 text-[#8e95a5] text-[11px]">quick-connect.sh</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/90 shadow-[0_0_8px_rgba(244,63,94,0.6)] inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/90 shadow-[0_0_8px_rgba(245,158,11,0.6)] inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/90 shadow-[0_0_8px_rgba(16,185,129,0.6)] inline-block" />
+                  <span className="ml-2 text-slate-400 text-[11px]">quick-connect.sh</span>
                 </div>
-                <span className="text-[10px] text-emerald-400 font-semibold">
+                <span className="text-[10px] text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-950/40 border border-emerald-500/30">
                   STATUS: LISTENING
                 </span>
               </div>
 
               {/* Terminal Code Snippet */}
-              <div className="space-y-3 text-[#f1f3f7] leading-relaxed">
+              <div className="space-y-4 text-white leading-relaxed">
                 <div>
-                  <span className="text-[#525866]"># Canal direto de e-mail</span>
-                  <div className="flex items-center justify-between bg-[#0a0c10] p-3 rounded border border-[#1b202e] mt-1">
-                    <span className="text-emerald-300 select-all font-semibold">
+                  <span className="text-slate-400"># Canal direto de e-mail</span>
+                  <div className="flex items-center justify-between bg-[#06080F]/90 p-3.5 rounded-lg border border-white/[0.08] mt-1.5 hover:border-cyan-500/40 transition-colors">
+                    <span className="text-cyan-300 select-all font-semibold text-xs sm:text-sm">
                       {profileData.email}
                     </span>
                     <button
                       onClick={copyEmail}
                       aria-label="Copiar endereço de e-mail"
-                      className="p-1 rounded text-[#8e95a5] hover:text-white transition-colors cursor-pointer"
+                      className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
                     >
                       {copiedEmail ? (
                         <Check className="w-4 h-4 text-emerald-400" />
@@ -126,50 +143,50 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <span className="text-[#525866]"># Conexão rápida</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-1">
+                  <span className="text-slate-400"># Conexão rápida</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-1.5">
                     <a
                       href={profileData.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded bg-[#0a0c10] border border-[#1b202e] hover:border-emerald-500/40 hover:bg-[#161b26] transition-all"
+                      className="flex items-center justify-between p-3 rounded-lg bg-[#06080F]/90 border border-white/[0.08] hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all group"
                     >
-                      <span className="flex items-center gap-2 text-[#f1f3f7]">
+                      <span className="flex items-center gap-2 text-slate-200 group-hover:text-emerald-300 transition-colors">
                         <WhatsappIcon className="w-4 h-4 text-emerald-400" />
                         WhatsApp
                       </span>
-                      <span className="text-[#525866] text-[10px]">↗</span>
+                      <span className="text-slate-500 group-hover:text-emerald-400 text-[10px]">↗</span>
                     </a>
 
                     <a
                       href={profileData.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded bg-[#0a0c10] border border-[#1b202e] hover:border-emerald-500/40 hover:bg-[#161b26] transition-all"
+                      className="flex items-center justify-between p-3 rounded-lg bg-[#06080F]/90 border border-white/[0.08] hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,242,254,0.15)] transition-all group"
                     >
-                      <span className="flex items-center gap-2 text-[#f1f3f7]">
-                        <LinkedinIcon className="w-4 h-4 text-emerald-400" />
+                      <span className="flex items-center gap-2 text-slate-200 group-hover:text-cyan-300 transition-colors">
+                        <LinkedinIcon className="w-4 h-4 text-cyan-400" />
                         LinkedIn
                       </span>
-                      <span className="text-[#525866] text-[10px]">↗</span>
+                      <span className="text-slate-500 group-hover:text-cyan-400 text-[10px]">↗</span>
                     </a>
 
                     <a
                       href={profileData.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded bg-[#0a0c10] border border-[#1b202e] hover:border-emerald-500/40 hover:bg-[#161b26] transition-all"
+                      className="flex items-center justify-between p-3 rounded-lg bg-[#06080F]/90 border border-white/[0.08] hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all group"
                     >
-                      <span className="flex items-center gap-2 text-[#f1f3f7]">
-                        <GithubIcon className="w-4 h-4 text-[#8e95a5]" />
+                      <span className="flex items-center gap-2 text-slate-200 group-hover:text-white transition-colors">
+                        <GithubIcon className="w-4 h-4 text-slate-300" />
                         GitHub
                       </span>
-                      <span className="text-[#525866] text-[10px]">↗</span>
+                      <span className="text-slate-500 group-hover:text-white text-[10px]">↗</span>
                     </a>
                   </div>
                 </div>
 
-                <div className="pt-2 text-[11px] text-[#525866]">
+                <div className="pt-2 text-[11px] text-slate-400">
                   <p>echo &quot;Tempo médio de resposta: &lt; 24h em dias úteis&quot;</p>
                 </div>
               </div>
