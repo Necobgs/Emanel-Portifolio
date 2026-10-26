@@ -13,7 +13,6 @@ export function CasesSection() {
     "Todos",
     "Backend & Orquestração",
     "RPA & Automação",
-    "Arquitetura & Filas",
     "Desktop & .NET",
   ];
 
@@ -28,8 +27,6 @@ export function CasesSection() {
         return "bg-gradient-to-r from-cyan-400 to-sky-400 text-[#06080F] font-bold shadow-[0_0_15px_rgba(0,242,254,0.35)]";
       case "RPA & Automação":
         return "bg-gradient-to-r from-emerald-400 to-teal-400 text-[#06080F] font-bold shadow-[0_0_15px_rgba(16,185,129,0.35)]";
-      case "Arquitetura & Filas":
-        return "bg-gradient-to-r from-indigo-400 to-sky-400 text-white font-bold shadow-[0_0_15px_rgba(99,102,241,0.35)]";
       case "Desktop & .NET":
         return "bg-gradient-to-r from-purple-400 to-indigo-400 text-white font-bold shadow-[0_0_15px_rgba(168,85,247,0.35)]";
       default:
@@ -65,7 +62,7 @@ export function CasesSection() {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Casos detalhados focados em resolução de problemas reais de orquestração assíncrona,
+              Cases detalhados focados em resolução de problemas reais, compondo
               automação resiliente de processos, mensageria e desenvolvimento de ferramentas corporativas.
             </p>
           </div>

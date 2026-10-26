@@ -1,8 +1,8 @@
 import React from "react";
-import { Server, Database, RefreshCw, Cpu, ShieldAlert, Monitor } from "lucide-react";
+import { Server, Database, RefreshCw, Cpu, Monitor } from "lucide-react";
 
 export interface ProjectDetailDiagramProps {
-  type?: "orchestration" | "rpa-engine" | "async-queues" | "wpf-desktop";
+  type?: "orchestration" | "rpa-engine" | "wpf-desktop";
 }
 
 export function ProjectDetailDiagram({ type = "orchestration" }: ProjectDetailDiagramProps) {
@@ -58,7 +58,7 @@ export function ProjectDetailDiagram({ type = "orchestration" }: ProjectDetailDi
 
         <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Fluxo: Requisição HTTP → Fila de Despacho → Worker em Background → Registro de Estado</span>
-          <span className="text-cyan-400 font-semibold">Desacoplamento: 100%</span>
+          <span className="text-cyan-400 font-semibold">Tolerância a falhas: Nativa</span>
         </div>
       </div>
     );
@@ -69,79 +69,36 @@ export function ProjectDetailDiagram({ type = "orchestration" }: ProjectDetailDi
       <div className="cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-7 font-mono text-xs space-y-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
         <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-slate-400">
           <span className="text-[11px] font-bold text-white uppercase tracking-wider">
-            Arquitetura de Resiliência: Ciclo do Robô RPA
+            Ciclo de Execução: Motor de Automação Resiliente
           </span>
-          <span className="text-emerald-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-950/40 border border-emerald-500/30">
-            DIAGRAMA DEFENSIVO
+          <span className="text-cyan-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-950/40 border border-cyan-500/30">
+            FRAMEWORK RPA
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
-            <span className="text-[10px] text-cyan-400 block font-bold">FASE 1: CONTEXTO</span>
-            <div className="font-bold text-white">Session &amp; Auth Handler</div>
-            <p className="text-[10px] text-slate-400">Validação de credenciais e injeção de tokens</p>
+            <span className="text-[10px] text-cyan-400 block font-bold">FASE 1</span>
+            <div className="font-bold text-white">Setup &amp; Contexto</div>
+            <p className="text-[10px] text-slate-400">Injeção de credenciais seguras e sessão isolada</p>
           </div>
 
           <div className="p-3.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 space-y-1.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-            <span className="text-[10px] text-emerald-300 block font-bold">FASE 2: NAVEGAÇÃO</span>
-            <div className="font-bold text-emerald-200">Playwright Adapter</div>
-            <p className="text-[10px] text-emerald-400/90">Esperas explícitas de DOM e retry com backoff</p>
+            <span className="text-[10px] text-emerald-300 block font-bold">FASE 2</span>
+            <div className="font-bold text-emerald-200">Navegação &amp; Extração</div>
+            <p className="text-[10px] text-emerald-400/90">Seletores robustos e espera por rede ociosa</p>
           </div>
 
           <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
-            <span className="text-[10px] text-sky-400 block font-bold">FASE 3: TELEMETRIA</span>
-            <div className="font-bold text-white">Structured JSON Logs</div>
-            <p className="text-[10px] text-slate-400">Emissão de métricas e status de término</p>
+            <span className="text-[10px] text-sky-400 block font-bold">FASE 3</span>
+            <div className="font-bold text-white">Telemetria &amp; Saída</div>
+            <p className="text-[10px] text-slate-400">Envio de payload JSON e logs estruturados</p>
           </div>
         </div>
 
         <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Padrão adotado: Page Object + Decorators de Repetição com Jitter</span>
           <span className="text-emerald-400 font-semibold">Taxa de Recuperação: Alta</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (type === "async-queues") {
-    return (
-      <div className="cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-7 font-mono text-xs space-y-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-slate-400">
-          <span className="text-[11px] font-bold text-white uppercase tracking-wider">
-            Fluxo de Filas: Roteamento Seguro e Dead-Letter Queue
-          </span>
-          <span className="text-cyan-400 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-950/40 border border-cyan-500/30">
-            TOLERÂNCIA A FALHAS
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/80 space-y-1.5">
-            <span className="text-[10px] text-cyan-400 block font-bold">ENTRADA</span>
-            <div className="font-bold text-white">Fila Principal (Main Queue)</div>
-            <p className="text-[10px] text-slate-400">Distribuição balanceada com ACK manual</p>
-          </div>
-
-          <div className="p-3.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 space-y-1.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-            <span className="text-[10px] text-emerald-300 block font-bold">PROCESSAMENTO</span>
-            <div className="font-bold text-emerald-200">Worker Consumer</div>
-            <p className="text-[10px] text-emerald-400/90">3 retentativas com backoff exponencial</p>
-          </div>
-
-          <div className="p-3.5 rounded-lg border border-amber-500/40 bg-amber-950/40 space-y-1.5 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
-            <span className="text-[10px] text-amber-300 block font-bold flex items-center gap-1">
-              <ShieldAlert className="w-3 h-3 text-amber-400" />
-              QUARANTINE
-            </span>
-            <div className="font-bold text-amber-200">Dead-Letter Queue (DLQ)</div>
-            <p className="text-[10px] text-amber-400/90">Isolamento de mensagens anômalas</p>
-          </div>
-        </div>
-
-        <div className="pt-3 text-[10px] text-slate-400 border-t border-white/[0.08] flex flex-col sm:flex-row sm:justify-between gap-1">
-          <span>Garantia: Mensagens defeituosas nunca bloqueiam o fluxo principal</span>
-          <span className="text-emerald-400 font-semibold">Auditoria: Preservada</span>
         </div>
       </div>
     );

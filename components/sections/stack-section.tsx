@@ -183,10 +183,6 @@ export function StackSection() {
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-300 mb-5 leading-relaxed">
-                    {group.description}
-                  </p>
-
                   <div className="space-y-3">
                     {group.skills.map((skill, sIdx) => (
                       <div

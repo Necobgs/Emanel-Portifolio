@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Cpu, CheckCircle2, ExternalLink, Lock } from "lucide-react";
+import { ArrowRight, Cpu, ExternalLink, Lock } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { ProjectDetail } from "@/data/projects";
 import { cn } from "@/lib/utils";
@@ -27,12 +27,6 @@ const categoryStyles: Record<
     iconColor: "text-emerald-400",
     hoverBorder: "hover:border-emerald-500/50",
     hoverShadow: "hover:shadow-[0_12px_40px_rgba(16,185,129,0.12)]",
-  },
-  "Arquitetura & Filas": {
-    badge: "bg-indigo-950/40 text-indigo-300 border-indigo-500/30",
-    iconColor: "text-indigo-400",
-    hoverBorder: "hover:border-indigo-500/50",
-    hoverShadow: "hover:shadow-[0_12px_40px_rgba(99,102,241,0.12)]",
   },
   "Desktop & .NET": {
     badge: "bg-purple-950/40 text-purple-300 border-purple-500/30",
@@ -102,7 +96,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono text-amber-400 bg-amber-950/30 border border-amber-500/30"
               >
                 <Lock className="w-3 h-3 text-amber-400" />
-                <span>NDA</span>
+                <span>Código sob sigilo</span>
               </span>
             )}
           </div>
@@ -120,26 +114,8 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
         {/* Resumo */}
         <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-          {project.summary}
+          {project.solution}
         </p>
-
-        {/* Destaques de Engenharia */}
-        <div className="mt-5 space-y-2 pt-4 border-t border-white/[0.08]">
-          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-semibold">
-            Destaques de Arquitetura:
-          </span>
-          <ul className="space-y-1.5">
-            {project.architectureHighlights.slice(0, 3).map((highlight, idx) => (
-              <li
-                key={idx}
-                className="flex items-start gap-2 text-xs text-slate-300 leading-normal"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{highlight}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
 
       <div className="mt-6 pt-5 border-t border-white/[0.08] space-y-4">

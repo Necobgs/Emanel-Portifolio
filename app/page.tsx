@@ -1,7 +1,5 @@
 import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/sections/hero-section";
-import { AboutSection } from "@/components/sections/about-section";
-import { ApproachSection } from "@/components/sections/approach-section";
 import { StackSection } from "@/components/sections/stack-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
 import { CasesSection } from "@/components/sections/cases-section";

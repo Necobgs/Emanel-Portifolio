@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <span className="hidden sm:inline-block font-mono text-xs text-slate-400">
                 Emanuel Borges • Backend &amp; RPA
               </span>
-              <SystemBadge status="active" label={project.status} />
+              <SystemBadge status="active" code={project.status} />
             </div>
           </div>
         </Container>

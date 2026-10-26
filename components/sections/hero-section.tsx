@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { ActionLink } from "@/components/ui/action-link";
 import { GithubIcon, LinkedinIcon, WhatsappIcon } from "@/components/ui/icons";
 import { profileData } from "@/data/profile";
-import { HeroArchitectureFlow } from "./hero-architecture-flow";
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
@@ -75,18 +74,16 @@ export function HeroSection() {
 
       <Container size="xl" className="relative z-10">
         <div className="flex justify-center items-center py-10">
-          {/* Coluna Esquerda: Composição Editorial com Entrada Discreta */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 space-y-6"
+            className="flex flex-col items-center text-center space-y-6 max-w-3xl"
           >
-
             {/* Headline Cinematográfica de Alto Impacto */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight text-[#f8fafc] leading-[1.14] mb-1!"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight text-[#f8fafc] leading-[1.14] mb-1 text-center"
             >
               Emanuel Borges de Oliveira
             </motion.h1>
@@ -155,21 +152,6 @@ export function HeroSection() {
               </ActionLink>
             </motion.div>
           </motion.div>
-
-          {/* Coluna Direita: Topologia Arquitetural Animada */}
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-            className="lg:col-span-5 relative"
-          > */}
-          {/* Halo de fundo atrás do componente da topologia */}
-          {/* <div
-              className="absolute -inset-4 bg-gradient-to-r from-cyan-500/15 via-emerald-500/10 to-indigo-500/15 rounded-2xl blur-xl -z-10"
-              aria-hidden="true"
-            />
-            <HeroArchitectureFlow />
-          </motion.div> */}
         </div>
       </Container>
     </section>

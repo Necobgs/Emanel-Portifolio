@@ -1,7 +1,6 @@
 export type ProjectCategory =
   | "Backend & Orquestração"
   | "RPA & Automação"
-  | "Arquitetura & Filas"
   | "Desktop & .NET";
 
 export interface TechnicalDecision {
@@ -27,7 +26,7 @@ export interface ProjectDetail {
   technicalDecisions: TechnicalDecision[];
   challengesAndLearnings: string[];
   techStack: string[];
-  diagramType?: "orchestration" | "rpa-engine" | "async-queues" | "wpf-desktop";
+  diagramType?: "orchestration" | "rpa-engine" | "wpf-desktop";
   githubUrl?: string;
   liveUrl?: string;
   plannedFeatures?: string[];
@@ -53,7 +52,7 @@ export const projectsData: ProjectDetail[] = [
     objective:
       "Centralizar em um portal seguro o agendamento de tarefas, controle rigoroso de estados de execução (Pendente, Em Execução, Sucesso, Falha), geração de relatórios consolidados e orquestração assíncrona de workers.",
     solution:
-      "Construção de uma API backend modular em NestJS e TypeScript. O agendamento dispara mensagens no RabbitMQ para distribuição assíncrona entre workers especializados em Python. O Redis gerencia estados em memória e locks de concorrência, enquanto o PostgreSQL mantém o histórico transacional auditável.",
+      "Plataforma completa que monitora a execução das tarefas, desde o inicio ao fim, disponibilizando aos desenvolvedores visualização dos logs e acompanhamento do andamento da tarefa em tempo real, junto de relatórios automatizados e agendamento de tarefas futuras ou diárias.",
     contribution:
       "Desenvolvimento de módulos de negócio em NestJS, modelagem das entidades relacionais, integração da mensageria com RabbitMQ e criação de endpoints para relatórios operacionais.",
     architectureHighlights: [
@@ -105,7 +104,7 @@ export const projectsData: ProjectDetail[] = [
     objective:
       "Estabelecer uma biblioteca/framework interno padronizado, fornecendo abstrações reutilizáveis para automação web (Playwright e Selenium), rotinas desktop, requisições HTTP seguras e monitoramento padronizado.",
     solution:
-      "Criação de classes base e decorators defensivos em Python. A arquitetura implementa o padrão Page Object, estratégias de retry exponencial com jitter, interceptadores de requisições com renovação automática de sessão e emissão de logs estruturados em JSON.",
+      "Criação de libraries internas, mapeando os sistemas utilizados com o padrão Page Object para reutilização em diversos projetos, facilitando também na manutenção de erros comuns entre os projetos.",
     contribution:
       "Concepção da estrutura arquitetural dos robôs, padronização dos utilitários de resiliência e apoio técnico à equipe na migração de automações legadas para o novo padrão.",
     architectureHighlights: [
@@ -136,12 +135,12 @@ export const projectsData: ProjectDetail[] = [
       "Tratamento de páginas com conteúdo renderizado assincronamente e iframes dinâmicos.",
       "Compreensão prática da importância de diferenciar erros de infraestrutura externa de erros de validação de dados de negócio.",
     ],
-    techStack: ["Python", "Playwright", "Selenium", "Requests", "Docker", "GitLab CI/CD"],
+    techStack: ["Python", "Playwright", "Selenium", "Requests", "Docker", "GitLab CI/CD", "Gitlab Package Registry"],
     diagramType: "rpa-engine",
   },
   {
     slug: "move-fast-backend",
-    title: "Move Fast — Backend Otimizado para Mobilidade com Go & Redis",
+    title: "Move Fast — Backend para Mobilidade (like Uber) em Go & Redis",
     tagline:
       "Serviço backend de alto desempenho com geolocalização e cache in-memory em Go.",
     summary:
@@ -183,7 +182,6 @@ export const projectsData: ProjectDetail[] = [
       "Gerenciamento atômico de chaves e TTL em cache distribuído.",
     ],
     techStack: ["Go", "Redis", "Docker", "Geolocalização", "APIs REST"],
-    diagramType: "async-queues",
   },
   {
     slug: "gestao-instituto-diomicio-freitas",
@@ -203,7 +201,7 @@ export const projectsData: ProjectDetail[] = [
     objective:
       "Desenvolver um backend centralizado, seguro e auditável para organizar o cadastro e histórico pedagógico dos alunos da instituição.",
     solution:
-      "API desenvolvida em NestJS com TypeScript e PostgreSQL. Implementação de validação rigorosa de dados via DTOs, migrações automatizadas e relatórios consolidados para a equipe administrativa.",
+      "API desenvolvida em NestJS com TypeScript e PostgreSQL. Facilitando a gestão do instituto com os alunos, podendo gerar relatórios e manter um histórico de encaminhamentos dos alunos para as empresas.",
     contribution:
       "Arquitetura do backend em NestJS, modelagem das entidades relacionais no PostgreSQL, implementação da camada de autenticação/autorização e entrega do código em repositório aberto.",
     architectureHighlights: [
@@ -232,52 +230,6 @@ export const projectsData: ProjectDetail[] = [
     diagramType: "orchestration",
   },
   {
-    slug: "arquitetura-processamento-assincrono",
-    title: "Arquitetura de Processamento Assíncrono & Tolerância a Falhas",
-    tagline:
-      "Padrões de mensageria com RabbitMQ, Dead-Letter Queues e controle estrito de concorrência.",
-    summary:
-      "Estudo arquitetural aplicado sobre o desenho de filas distribuídas, políticas de descarte seguro, confirmação manual de entrega (ACK) e resiliência transacional sob alta carga.",
-    category: "Arquitetura & Filas",
-    status: "Estudo Aplicado",
-    featured: true,
-    context:
-      "Camada arquitetural crítica responsável por garantir que picos de demanda ou indisponibilidade de serviços terceiros não causem perda de mensagens nem interrupção das operações.",
-    problem:
-      "Sistemas síncronos sofrem com travamentos em cadeia (cascading failures): se um sistema terceiro fica lento ou fora do ar, requisições HTTP empilham conexões, esgotam recursos do servidor e derrubam a plataforma.",
-    objective:
-      "Construir uma topologia resiliente de mensageria assíncrona com tratamento automático de falhas, filas de quarentena para mensagens defeituosas e garantia de entrega com concorrência controlada.",
-    solution:
-      "Implementação de filas no RabbitMQ com ACK manual após confirmação de persistência. Mensagens com falhas recorrentes são roteadas para Dead-Letter Queues (DLQ) para análise posterior, sem bloquear o fluxo principal. O Redis atua no controle de locks distribuídos para evitar processamentos simultâneos.",
-    contribution:
-      "Desenho dos fluxos de roteamento de filas, parametrização dos limites de concorrência por consumidor e implementação dos mecanismos de idempotência.",
-    architectureHighlights: [
-      "ACK manual (acknowledgement) apenas após execução e persistência bem-sucedidas",
-      "Dead-Letter Queues (DLQ) para isolamento seguro de mensagens anômalas",
-      "Locks distribuídos via Redis para prevenção de race conditions",
-      "Controle de concorrência por worker para não exceder limites de infraestrutura",
-      "Idempotência com identificador único de mensagem contra duplicações",
-    ],
-    technicalDecisions: [
-      {
-        title: "Dead-Letter Exchange Dedicada",
-        rationale:
-          "Mensagens com erros irrecuperáveis são direcionadas para análise sem interromper o processamento das milhares de mensagens saudáveis seguintes.",
-      },
-      {
-        title: "Confirmação de Entrega Granular",
-        rationale:
-          "Se um worker cair no meio de um processamento, a mensagem retorna à fila automaticamente graças ao modelo de ACK tardio.",
-      },
-    ],
-    challengesAndLearnings: [
-      "Garantia de idempotência em sistemas distribuídos sem depender de transações distribuídas pesadas (2PC).",
-      "Domínio prático dos trade-offs entre vazão (throughput) e garantia estrita de ordem de entrega.",
-    ],
-    techStack: ["RabbitMQ", "Redis", "TypeScript", "Node.js", "Docker", "PostgreSQL"],
-    diagramType: "async-queues",
-  },
-  {
     slug: "gerenciador-desktop-salao",
     title: "Gerenciador Desktop para Salão de Beleza & Estética",
     tagline:
@@ -292,9 +244,9 @@ export const projectsData: ProjectDetail[] = [
     problem:
       "Dificuldade de controle rápido no balcão de atendimento, falta de histórico centralizado de clientes e dependência de ferramentas lentas ou com mensalidades inviáveis para negócios iniciantes.",
     objective:
-      "Desenvolver um software desktop leve, intuitivo, esteticamente refinado e com operação totalmente local sem dependência de internet para consultas de rotina.",
+      "Desenvolver um software desktop leve, intuitivo, esteticamente refinado e com operação totalmente local sem dependência de internet para consultas de rotina, possuindo um design elegante, moderno e com módulos coesos com a necessidade do salão de beleza Karla Borges",
     solution:
-      "Aplicação desenvolvida em C# com arquitetura MVVM limpa. A camada de interface utiliza a biblioteca moderna WPF UI para estética alinhada ao Windows 11 com suporte a tema escuro. A persistência utiliza SQLite com Entity Framework Core para garantir velocidade de consulta e portabilidade de dados.",
+      "Aplicação desktop desenvolvido com baixo custo de hardware e zero custo mensal(sem servidores, bancos de dados ou backup em nuvem), com módulos coesos com a necessidade do salão de beleza Karla Borges, como integração com o calendário do iphone para poder gerenciar a agenda de clientes tanto no computador quanto no iphone, tendo sincronização de 30 em 30 segundos enquanto possui a aplicação aberta.",
     contribution:
       "Concepção completa do projeto: levantamento de requisitos, arquitetura em camadas (Views, ViewModels, Services), modelagem do schema relacional e implementação de testes locais.",
     architectureHighlights: [

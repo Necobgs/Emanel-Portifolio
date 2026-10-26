@@ -32,8 +32,6 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: "Sobre", href: "#sobre" },
-    { label: "Abordagem", href: "#abordagem" },
     { label: "Competências", href: "#competencias" },
     { label: "Experiência", href: "#experiencia" },
     { label: "Projetos", href: "#projetos" },
@@ -42,10 +40,11 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-[#06080F]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.7)] py-2.5"
-        : "bg-[#06080F]/60 backdrop-blur-md border-b border-transparent py-4"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#06080F]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.7)] py-2.5"
+          : "bg-[#06080F]/60 backdrop-blur-md border-b border-transparent py-4"
+      }`}
     >
       <Container size="xl">
         <div className="flex items-center justify-between">
