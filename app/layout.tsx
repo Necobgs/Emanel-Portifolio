@@ -4,6 +4,7 @@ import { getSiteUrl } from "@/lib/site";
 import { profileData } from "@/data/profile";
 import { RootJsonLd } from "@/components/seo/json-ld";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -65,6 +66,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#06080F] text-[#F8FAFC] font-sans selection:bg-cyan-500/25 selection:text-cyan-200">
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
