@@ -42,11 +42,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#06080F]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.7)] py-2.5"
-          : "bg-[#06080F]/60 backdrop-blur-md border-b border-transparent py-4"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-[#06080F]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.7)] py-2.5"
+        : "bg-[#06080F]/60 backdrop-blur-md border-b border-transparent py-4"
+        }`}
     >
       <Container size="xl">
         <div className="flex items-center justify-between">
@@ -87,7 +86,7 @@ export function Navbar() {
 
           {/* CTAs Desktop */}
           <div className="hidden lg:flex items-center gap-3">
-            <SystemBadge status="active" label="ONLINE" code="CRICIÚMA" />
+            <SystemBadge status="active" code="CRICIÚMA - SC" />
             <a href="#projetos">
               <Button size="sm" variant="primary" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
                 Ver Projetos
@@ -97,7 +96,7 @@ export function Navbar() {
 
           {/* Botão Mobile */}
           <div className="flex md:hidden items-center gap-2">
-            <SystemBadge status="active" label="ONLINE" className="px-2 py-0.5 text-[10px]" />
+            <SystemBadge status="active" className="px-2 py-0.5 text-[10px]" />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}

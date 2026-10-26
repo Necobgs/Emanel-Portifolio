@@ -23,9 +23,11 @@ export const experienceData: ExperienceItem[] = [
     description:
       "Atuação focada no ecossistema de automações com Python e na sustentação/evolução de sistemas corporativos internos.",
     achievements: [
-      "Desenvolvimento e evolução de portal interno full-stack com NestJS, PostgreSQL e Angular 14",
-      "Construção de extensão para Google Chrome utilizando React e Vite para suporte aos fluxos operacionais",
-      "Mentoria técnica e estruturação de uma arquitetura padronizada para as dezenas de automações corporativas da equipe",
+      "Desenvolvimento e evolução de portal interno(intranet) full-stack utilizando NestJS, Angular 14 e Postgres",
+      "Construção de extensão para Google Chrome utilizando React e Vite para login automático nos portais internos",
+      "Estruturação de uma arquitetura padronizada para as dezenas de automações corporativas da equipe de automação",
+      "Mentoria aos novos colaboradores da equipe de automação",
+      "Participação de mapeamento de fluxos e sugestões ativas para otimizações em processos internos",
     ],
     techStack: ["Python", "NestJS", "PostgreSQL", "React", "Vite", "Angular 14", "Docker"],
   },
@@ -40,11 +42,29 @@ export const experienceData: ExperienceItem[] = [
     description:
       "Desenvolvimento de soluções de automação em Python e resolução de problemas analíticos de otimização de fluxo de trabalho.",
     achievements: [
-      "Construção e sustentação de dezenas de ferramentas de automação e robôs com execução diária, focados em regras de negócio e estabilidade",
-      "Aplicação de raciocínio lógico avançado em cenários de alta complexidade e tratamento de exceções",
-      "Aprimoramento contínuo da estabilidade e do tempo de resposta das rotinas automatizadas",
+      "Construção e sustentação de dezenas de ferramentas de automação e robôs com execução diária, focados em regras de negócio, estabilidade e redução de atividades manuais",
+      "Aprimoramento contínuo sobre as ferramentas propostas e suas regras de negócio, com o objetivo de otimizar processos e reduzir tarefas manuais e/ou repetitivas",
     ],
-    techStack: ["Python", "Automação Web", "PostgreSQL", "Git"],
+    techStack: ["Python", "Automação Web", "PostgreSQL", "Git", "Selenium", "Playwright", "HTML", "CSS", "JavaScript", "Typescript"],
+  },
+  {
+    id: "goes-setor-sistema",
+    role: "Auxiliar de Sistemas",
+    company: "Góes & Nicoladelli",
+    location: "Criciúma, SC",
+    period: "Fereveiro de 2023 — Setembro de 2023",
+    isCurrent: false,
+    type: "Profissional",
+    description:
+      "Atuação no time de sistemas, conhecendo os sistemas internos da empresa, suas aplicações no dia a dia e auxiliando usuários com dúvidas e problemas técnicos.",
+    achievements: [
+      "Organização e manutenção de documentos técnicos e manuais de uso dos sistemas internos",
+      "Suporte direto a usuários, solucionando dúvidas e problemas técnicos relacionados aos sistemas",
+      "Auxílio em testes e validações de novas funcionalidades e correções de bugs",
+      "Experiência no uso real de um sistema, conhecimento de regras de negócio e fluxo de trabalho",
+      "Atuação com RPA em segundo plano",
+    ],
+    techStack: ["Python", "Regras de negócio", "Sistemas internos", "Suporte a usuários", "Testes e validações"],
   },
   {
     id: "teia-web",

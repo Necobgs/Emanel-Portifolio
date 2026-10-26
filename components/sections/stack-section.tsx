@@ -114,8 +114,8 @@ export function StackSection() {
         {/* Cabeçalho */}
         <div className="max-w-3xl mb-14 space-y-3">
           <div className="flex items-center gap-2">
-            <SystemBadge status="active" label="REPERTÓRIO TÉCNICO" code="03" />
-            <span className="text-xs font-mono text-slate-400">Competências &amp; Contexto</span>
+            <SystemBadge status="active" code="Competências &amp; Contexto" />
+            <span className="text-xs font-mono text-slate-400"></span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -126,9 +126,8 @@ export function StackSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-            Classificação honesta das ferramentas com as quais atuo profissionalmente em
-            backend, automações e infraestrutura, destacando o contexto real de aplicação sem
-            métricas ou porcentagens fictícias.
+            Classificação das ferramentas com as quais atuo profissionalmente em
+            backend, automações e infraestrutura, destacando o contexto real de aplicação.
           </p>
 
           {/* Legenda visual dos níveis de domínio com distinção clara */}

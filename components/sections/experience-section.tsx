@@ -27,8 +27,7 @@ export function ExperienceSection() {
         {/* Cabeçalho */}
         <div className="max-w-3xl mb-14 space-y-3">
           <div className="flex items-center gap-2">
-            <SystemBadge status="active" label="TRAJETÓRIA PROFISSIONAL" code="04" />
-            <span className="text-xs font-mono text-slate-400">Histórico &amp; Responsabilidades</span>
+            <SystemBadge status="active" code="Trajetória Profissional" />
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -39,8 +38,7 @@ export function ExperienceSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-            Atuação prática em ambientes corporativos com desenvolvimento de robôs em Python,
-            APIs corporativas em NestJS, gestão de banco de dados e mentoria de código.
+            Cargos trilhados, aprendizado técnico, responsabilidades, entregas e formação acadêmica. Aqui mostro o caminho percorrido.
           </p>
         </div>
 
@@ -80,11 +78,10 @@ export function ExperienceSection() {
                         {exp.role}
                       </h3>
                       <span
-                        className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full border ${
-                          exp.isCurrent
-                            ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-300 font-bold shadow-[0_0_10px_rgba(16,185,129,0.15)]"
-                            : "bg-[#111726] border-white/10 text-slate-400"
-                        }`}
+                        className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full border ${exp.isCurrent
+                          ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-300 font-bold shadow-[0_0_10px_rgba(16,185,129,0.15)]"
+                          : "bg-[#111726] border-white/10 text-slate-400"
+                          }`}
                       >
                         {exp.period}
                       </span>

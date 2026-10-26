@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 
 export interface SystemBadgeProps {
   status?: "active" | "neutral" | "warning";
-  label: string;
   code?: string;
   pulse?: boolean;
   className?: string;
@@ -11,7 +10,6 @@ export interface SystemBadgeProps {
 
 export function SystemBadge({
   status = "active",
-  label,
   code,
   pulse = true,
   className,
@@ -47,8 +45,7 @@ export function SystemBadge({
         )}
         <span className={cn("relative inline-flex rounded-full h-2 w-2", current.dot)} />
       </span>
-      <span className="font-medium tracking-tight">{label}</span>
-      {code && <span className="text-slate-400 font-normal">[{code}]</span>}
+      {code && <span className="text-slate-400 font-normal">{code}</span>}
     </div>
   );
 }

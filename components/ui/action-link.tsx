@@ -23,7 +23,7 @@ export function ActionLink({
   const variantStyles = {
     accent: "text-emerald-400 hover:text-emerald-300 underline-offset-4 hover:underline",
     subtle: "text-[#8e95a5] hover:text-[#f1f3f7]",
-    mono: "text-[#f1f3f7] hover:text-emerald-400 border-b border-[#252c3f] hover:border-emerald-400 pb-0.5",
+    mono: "text-[#f1f3f7] hover:text-emerald-400 border-1 border-[#252c3f] hover:border-emerald-400 p-1",
   };
 
   const targetProps = external

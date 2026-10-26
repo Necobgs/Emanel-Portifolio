@@ -14,8 +14,6 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <HeroSection />
-        <AboutSection />
-        <ApproachSection />
         <StackSection />
         <ExperienceSection />
         <CasesSection />

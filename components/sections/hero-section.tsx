@@ -74,7 +74,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-tech-grid opacity-35 pointer-events-none -z-0" />
 
       <Container size="xl" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="flex justify-center items-center py-10">
           {/* Coluna Esquerda: Composição Editorial com Entrada Discreta */}
           <motion.div
             variants={containerVariants}
@@ -82,52 +82,25 @@ export function HeroSection() {
             animate="visible"
             className="lg:col-span-7 space-y-6"
           >
-            {/* Tag de Posicionamento Profissional Iluminada */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/40 text-cyan-300 border border-cyan-500/30 shadow-[0_0_12px_rgba(0,242,254,0.15)]">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                <span>Backend Engineer | RPA &amp; Software Automation</span>
-              </div>
-              <span className="hidden sm:inline-block text-[#64748b] font-mono text-xs">•</span>
-              <span className="hidden sm:inline-block text-xs font-mono text-[#94a3b8]">
-                Criciúma, SC (Remoto / Híbrido)
-              </span>
-            </motion.div>
 
             {/* Headline Cinematográfica de Alto Impacto */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight text-[#f8fafc] leading-[1.14]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight text-[#f8fafc] leading-[1.14] mb-1!"
             >
-              <span className="block text-xs sm:text-sm font-mono font-semibold tracking-wider text-cyan-400 uppercase mb-3">
-                Emanuel Borges — Engenheiro Backend &amp; Automação RPA
-              </span>
-              Construindo software que conecta{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-teal-300 drop-shadow-[0_0_20px_rgba(0,242,254,0.25)]">
-                automação
-              </span>
-              ,{" "}
-              <span className="text-[#f8fafc]">backend</span> e{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-cyan-300 to-sky-400 drop-shadow-[0_0_20px_rgba(0,242,254,0.25)]">
-                negócio
-              </span>
-              .
+              Emanuel Borges de Oliveira
             </motion.h1>
 
             {/* Descrição Alinhada com Stacks de Produção */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-[#94a3b8] leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg text-[#94a3b8] leading-relaxed max-w-2xl text-center"
             >
-              Desenvolvedor em Criciúma/SC focado em APIs de alta resiliência, processamento assíncrono e automação corporativa. Transformo problemas operacionais em soluções técnicas bem estruturadas utilizando{" "}
-              <span className="text-[#f8fafc] font-mono font-medium border-b border-cyan-500/30">Python</span>,{" "}
-              <span className="text-[#f8fafc] font-mono font-medium border-b border-teal-500/30">NestJS</span>,{" "}
-              <span className="text-[#f8fafc] font-mono font-medium border-b border-cyan-500/30">RabbitMQ</span> e{" "}
-              <span className="text-[#f8fafc] font-mono font-medium border-b border-sky-500/30">PostgreSQL</span>.
+              Backend Engineer | RPA Software Automation
             </motion.p>
 
             {/* CTAs Funcionais com Reflexos LUMINOSOS */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 pt-1">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 pt-10 justify-center">
               <a href="#projetos">
                 <Button variant="primary" size="lg" rightIcon={<ArrowRight className="w-4 h-4" />}>
                   Explorar Projetos
@@ -152,7 +125,7 @@ export function HeroSection() {
             {/* Links de Perfil Profissional */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-center gap-5 pt-3 border-t border-[#172033] text-xs font-mono"
+              className="flex flex-wrap items-center justify-center gap-5 pt-6 border-t border-[#172033] text-xs font-mono"
             >
               <ActionLink
                 href={profileData.github}
@@ -184,19 +157,19 @@ export function HeroSection() {
           </motion.div>
 
           {/* Coluna Direita: Topologia Arquitetural Animada */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.98, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
             className="lg:col-span-5 relative"
-          >
-            {/* Halo de fundo atrás do componente da topologia */}
-            <div
+          > */}
+          {/* Halo de fundo atrás do componente da topologia */}
+          {/* <div
               className="absolute -inset-4 bg-gradient-to-r from-cyan-500/15 via-emerald-500/10 to-indigo-500/15 rounded-2xl blur-xl -z-10"
               aria-hidden="true"
             />
             <HeroArchitectureFlow />
-          </motion.div>
+          </motion.div> */}
         </div>
       </Container>
     </section>

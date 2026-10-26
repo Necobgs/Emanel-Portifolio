@@ -54,8 +54,7 @@ export function CasesSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-3xl space-y-3">
             <div className="flex items-center gap-2">
-              <SystemBadge status="active" label="CASES SELECIONADOS" code="05" />
-              <span className="text-xs font-mono text-slate-400">Projetos &amp; Arquitetura</span>
+              <SystemBadge status="active" code="Projetos & Cases" />
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -77,11 +76,10 @@ export function CasesSection() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
-                  activeCategory === cat
-                    ? getActiveFilterStyle(cat)
-                    : "text-slate-400 hover:text-white hover:bg-white/[0.05]"
-                }`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${activeCategory === cat
+                  ? getActiveFilterStyle(cat)
+                  : "text-slate-400 hover:text-white hover:bg-white/[0.05]"
+                  }`}
               >
                 {cat}
               </button>

@@ -52,8 +52,7 @@ export function ContactSection() {
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg">
               Estou disponível para novos projetos, consultoria técnica em backend e automação
-              ou oportunidades corporativas. Se você precisa de mensageria com RabbitMQ,
-              APIs escaláveis em NestJS/Python ou robôs resilientes de automação, entre em contato.
+              ou oportunidades corporativas, entre em contato.
             </p>
 
             <div className="space-y-3 pt-2">

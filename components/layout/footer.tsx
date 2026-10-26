@@ -21,9 +21,6 @@ export function Footer() {
             </div>
             <span>{profileData.name}</span>
           </div>
-          <p className="text-xs text-slate-400 font-mono">
-            Next.js 16 • React 19 • Tailwind CSS v4 • Motion • GSAP
-          </p>
           <p className="text-xs text-slate-500 font-mono mt-0.5">
             © 2026 — Engenharia de Software &amp; Automação RPA. Todos os direitos reservados.
           </p>
