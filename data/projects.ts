@@ -153,7 +153,7 @@ export const projectsData: ProjectDetail[] = [
     objective:
       "Refatorar completamente o scraper eliminando a camada pesada do navegador e construindo uma arquitetura de requisições paralelas assíncronas. Os requisitos incluíam contornar a proteção anti-bot do Akamai e decodificar a criptografia assimétrica proprietária do portal para concluir todo o lote de 22.000 clientes no intervalo de uma tarde (até 6 horas).",
     solution:
-      "A solução eliminou o navegador do fluxo de raspagem massiva, replicando as chamadas HTTP diretamente em nível assíncrono paralelo com controle rigoroso de concorrência. Para contornar o anti-bot do Akamai (que analisa scripts ofuscados e telemetria do navegador para validar a sessão), o Playwright foi utilizado pontualmente para carregar os scripts e extrair os tokens/cookies válidos. Em seguida, utilizando o Grok 4.7 no Cursor IDE durante a inspeção detalhada das requisições, realizou-se a engenharia reversa da biblioteca interna de criptografia assimétrica do Santander, recriando-a em Python para assinar, cifrar e decifrar os payloads enviados e recebidos com latência mínima.",
+      "Substituição do Selenium por requisições HTTP assíncronas paralelas, contornando o anti-bot Akamai com Playwright e replicando a criptografia assimétrica do portal via engenharia reversa com Grok no Cursor.",
     contribution:
       "Diagnóstico e redesign arquitetural completo do robô, migrando de Selenium para chamadas assíncronas; engenharia reversa da biblioteca de criptografia assimétrica com auxílio de IA no Cursor IDE; estratégia de handshake e extração de tokens do Akamai via Playwright; e implementação de paralelismo assíncrono com rate limit para 22.000 clientes em produção.",
     architectureHighlights: [

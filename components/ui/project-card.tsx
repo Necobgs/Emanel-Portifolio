@@ -132,20 +132,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           {project.solution}
         </p>
 
-        {/* Métricas de Impacto em Destaque */}
-        {project.metrics && project.metrics.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-3.5">
-            {project.metrics.slice(0, 2).map((m, idx) => (
-              <div
-                key={idx}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/[0.08] dark:bg-amber-500/[0.12] border border-amber-500/30 text-[11px] font-mono"
-              >
-                <span className="font-bold text-amber-700 dark:text-amber-300">{m.value}</span>
-                <span className="text-slate-700 dark:text-slate-300">{m.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
+
       </div>
 
       <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/[0.08] space-y-4">
