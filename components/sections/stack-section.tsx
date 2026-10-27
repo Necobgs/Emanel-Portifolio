@@ -1,105 +1,45 @@
 "use client";
 
-import React from "react";
-import { motion } from "motion/react";
-import { Server, Bot, Database, Layers, Activity, Sparkles, Cpu } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Container } from "@/components/ui/container";
 import { SystemBadge } from "@/components/ui/system-badge";
-import { skillsData, SkillLevel } from "@/data/skills";
-
-interface CategoryTheme {
-  icon: React.ReactNode;
-  iconBg: string;
-  iconBorder: string;
-  iconColor: string;
-  hoverBorder: string;
-  hoverShadow: string;
-  hoverTitle: string;
-}
-
-const categoryThemeMap: Record<string, CategoryTheme> = {
-  backend: {
-    icon: <Server className="w-4 h-4 text-cyan-400" />,
-    iconBg: "bg-cyan-950/40",
-    iconBorder: "border-cyan-500/30",
-    iconColor: "text-cyan-400",
-    hoverBorder: "hover:border-cyan-500/50",
-    hoverShadow: "hover:shadow-[0_10px_35px_rgba(0,242,254,0.12)]",
-    hoverTitle: "group-hover:text-cyan-200",
-  },
-  rpa: {
-    icon: <Bot className="w-4 h-4 text-emerald-400" />,
-    iconBg: "bg-emerald-950/40",
-    iconBorder: "border-emerald-500/30",
-    iconColor: "text-emerald-400",
-    hoverBorder: "hover:border-emerald-500/50",
-    hoverShadow: "hover:shadow-[0_10px_35px_rgba(16,185,129,0.12)]",
-    hoverTitle: "group-hover:text-emerald-200",
-  },
-  database: {
-    icon: <Database className="w-4 h-4 text-sky-400" />,
-    iconBg: "bg-sky-950/40",
-    iconBorder: "border-sky-500/30",
-    iconColor: "text-sky-400",
-    hoverBorder: "hover:border-sky-500/50",
-    hoverShadow: "hover:shadow-[0_10px_35px_rgba(56,189,248,0.12)]",
-    hoverTitle: "group-hover:text-sky-200",
-  },
-  "messaging-infra": {
-    icon: <Layers className="w-4 h-4 text-indigo-400" />,
-    iconBg: "bg-indigo-950/40",
-    iconBorder: "border-indigo-500/30",
-    iconColor: "text-indigo-400",
-    hoverBorder: "hover:border-indigo-500/50",
-    hoverShadow: "hover:shadow-[0_10px_35px_rgba(99,102,241,0.12)]",
-    hoverTitle: "group-hover:text-indigo-200",
-  },
-  observability: {
-    icon: <Activity className="w-4 h-4 text-teal-300" />,
-    iconBg: "bg-teal-950/40",
-    iconBorder: "border-teal-500/30",
-    iconColor: "text-teal-300",
-    hoverBorder: "hover:border-teal-500/50",
-    hoverShadow: "hover:shadow-[0_10px_35px_rgba(45,212,191,0.12)]",
-    hoverTitle: "group-hover:text-teal-200",
-  },
-  complementary: {
-    icon: <Sparkles className="w-4 h-4 text-purple-400" />,
-    iconBg: "bg-purple-950/40",
-    iconBorder: "border-purple-500/30",
-    iconColor: "text-purple-400",
-    hoverBorder: "hover:border-purple-500/50",
-    hoverShadow: "hover:shadow-[0_10px_35px_rgba(168,85,247,0.12)]",
-    hoverTitle: "group-hover:text-purple-200",
-  },
-};
+import { TechLogo } from "@/components/ui/tech-logo";
+import { skillsData, SkillItem } from "@/data/skills";
 
 export function StackSection() {
-  const getLevelBadge = (level: SkillLevel) => {
-    switch (level) {
-      case "Uso Profissional Contínuo":
-        return (
-          <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded border border-emerald-500/40 bg-emerald-950/40 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
-            Foco Principal
-          </span>
-        );
-      case "Produção & Integração":
-        return (
-          <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded border border-cyan-500/30 bg-cyan-950/30 text-cyan-300">
-            Produção
-          </span>
-        );
-      case "Aprendizado Complementar":
-        return (
-          <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded border border-purple-500/40 bg-purple-950/40 text-purple-300 shadow-[0_0_10px_rgba(168,85,247,0.2)]">
-            Estudo Ativo
-          </span>
-        );
-    }
-  };
+  const [activeCategory, setActiveCategory] = useState<string>("Todos");
+
+  const categories = [
+    { id: "Todos", label: "Todas as Ferramentas" },
+    { id: "backend", label: "Backend & APIs" },
+    { id: "rpa", label: "RPA & Automação" },
+    { id: "database", label: "Bancos de Dados" },
+    { id: "messaging-infra", label: "Mensageria & Infra" },
+    { id: "observability", label: "Observabilidade" },
+    { id: "complementary", label: "Em Estudo" },
+  ];
+
+  // Flatten skills with category info for unified grid display
+  const allSkills: (SkillItem & { categoryId: string; categoryName: string })[] = skillsData.flatMap(
+    (group) =>
+      group.skills.map((skill) => ({
+        ...skill,
+        categoryId: group.id,
+        categoryName: group.category,
+      }))
+  );
+
+  const filteredSkills =
+    activeCategory === "Todos"
+      ? allSkills
+      : allSkills.filter((s) => s.categoryId === activeCategory);
 
   return (
-    <section id="competencias" className="py-24 border-t border-white/[0.06] relative bg-[#06080F] overflow-hidden">
+    <section
+      id="competencias"
+      className="min-h-[100dvh] py-20 md:py-24 flex flex-col justify-center border-t border-slate-200 dark:border-white/[0.06] relative bg-slate-50 dark:bg-[#06080F] overflow-hidden"
+    >
       {/* Luzes atmosféricas de fundo harmonizadas */}
       <div
         aria-hidden="true"
@@ -110,102 +50,133 @@ export function StackSection() {
         className="pointer-events-none absolute bottom-10 -right-32 w-[550px] h-[350px] bg-gradient-to-l from-purple-500/10 via-sky-500/5 to-transparent blur-[140px] rounded-full"
       />
 
-      <Container size="xl" className="relative z-10">
+      <Container size="xl" className="relative z-10 w-full my-auto">
         {/* Cabeçalho */}
-        <div className="max-w-3xl mb-14 space-y-3">
-          <div className="flex items-center gap-2">
-            <SystemBadge status="active" code="Competências &amp; Contexto" />
-            <span className="text-xs font-mono text-slate-400"></span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="max-w-3xl space-y-3">
+            <div className="flex items-center gap-2">
+              <SystemBadge status="active" code="Competências & Stack" />
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+              Tecnologias, Práticas &amp;{" "}
+              <span className="bg-gradient-to-r from-cyan-600 via-teal-600 to-purple-600 dark:from-cyan-300 dark:via-teal-300 dark:to-purple-300 bg-clip-text text-transparent">
+                Nível de Domínio
+              </span>
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              Catálogo de tecnologias com indicador de dominância prática (1 a 5) e status real de aplicação corporativa.
+            </p>
+
+            {/* Legenda visual */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <div className="flex items-center gap-1.5 text-xs font-mono text-slate-600 dark:text-slate-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
+                <span>Produção Corporativa</span>
+              </div>
+              <span className="text-slate-400 dark:text-slate-600 font-mono text-xs">•</span>
+              <div className="flex items-center gap-1.5 text-xs font-mono text-slate-600 dark:text-slate-400">
+                <span className="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.7)]" />
+                <span>Estudo Ativo &amp; Exploração</span>
+              </div>
+            </div>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
-            Tecnologias, Práticas &amp;{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-purple-300 bg-clip-text text-transparent">
-              Nível de Domínio
-            </span>
-          </h2>
-
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-            Classificação das ferramentas com as quais atuo profissionalmente em
-            backend, automações e infraestrutura, destacando o contexto real de aplicação.
-          </p>
-
-          {/* Legenda visual dos níveis de domínio com distinção clara */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-              <span>Foco Principal (Domínio Contínuo)</span>
-            </div>
-            <span className="text-slate-600 font-mono text-xs">•</span>
-            <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,242,254,0.8)]" />
-              <span>Produção &amp; Integração</span>
-            </div>
-            <span className="text-slate-600 font-mono text-xs">•</span>
-            <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
-              <span>Estudo Ativo (Exploração &amp; Aprendizado)</span>
-            </div>
+          {/* Filtros de Categoria */}
+          <div className="flex flex-wrap gap-1.5 bg-slate-100/90 dark:bg-[#0B0F19]/90 p-1.5 rounded-xl border border-slate-200 dark:border-white/[0.08] backdrop-blur-md self-start md:self-end">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
+                  activeCategory === cat.id
+                    ? "bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold shadow-[0_0_15px_rgba(2,132,199,0.35)]"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/[0.05]"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Grid de Grupos de Tecnologias com Separação de Categorias Concordante */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillsData.map((group) => {
-            const theme = categoryThemeMap[group.id] || {
-              icon: <Cpu className="w-4 h-4 text-cyan-400" />,
-              iconBg: "bg-cyan-950/40",
-              iconBorder: "border-cyan-500/30",
-              iconColor: "text-cyan-400",
-              hoverBorder: "hover:border-cyan-500/50",
-              hoverShadow: "hover:shadow-[0_10px_35px_rgba(0,242,254,0.12)]",
-              hoverTitle: "group-hover:text-cyan-200",
-            };
+        {/* Grid de Pequenos Cards */}
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <AnimatePresence mode="popLayout">
+            {filteredSkills.map((skill) => {
+              const isProd = skill.status === "Produção";
 
-            return (
-              <motion.div
-                key={group.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className={`cinematic-surface rounded-xl border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between ${theme.hoverBorder} ${theme.hoverShadow} transition-all duration-300 group`}
-              >
-                <div>
-                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.08]">
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-8 h-8 rounded-lg ${theme.iconBg} border ${theme.iconBorder} flex items-center justify-center shadow-sm`}>
-                        {theme.icon}
-                      </div>
-                      <h3 className={`font-mono text-xs font-bold text-white uppercase tracking-wider ${theme.hoverTitle} transition-colors`}>
-                        {group.category}
-                      </h3>
+              return (
+                <motion.div
+                  key={skill.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="cinematic-surface p-4 rounded-xl border border-slate-200 dark:border-white/[0.08] hover:border-cyan-400 dark:hover:border-cyan-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between gap-3 group"
+                >
+                  {/* Topo: Logo + Tag de Produção ou Estudo */}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center p-1.5 text-cyan-600 dark:text-cyan-400 group-hover:scale-105 transition-transform shrink-0">
+                      <TechLogo name={skill.name} className="w-5 h-5" />
+                    </div>
+
+                    {isProd ? (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Produção
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-purple-50 dark:bg-purple-950/50 text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-purple-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                        Estudo
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Centro: Nome da Ferramenta e Contexto Prático */}
+                  <div>
+                    <h3 className="font-mono text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+                      {skill.name}
+                    </h3>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mt-1">
+                      {skill.context}
+                    </p>
+                  </div>
+
+                  {/* Rodapé: 5 bolinhas de nível de dominância */}
+                  <div className="flex items-center justify-between pt-2.5 border-t border-slate-200/80 dark:border-white/[0.06]">
+                    <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-medium">
+                      Domínio ({skill.rating}/5)
+                    </span>
+                    <div
+                      className="flex items-center gap-1.5"
+                      aria-label={`Nível de dominância: ${skill.rating} de 5`}
+                    >
+                      {[1, 2, 3, 4, 5].map((dot) => {
+                        const isFilled = dot <= skill.rating;
+                        return (
+                          <span
+                            key={dot}
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              isFilled
+                                ? isProd
+                                  ? "bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_rgba(0,242,254,0.7)]"
+                                  : "bg-purple-500 dark:bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.7)]"
+                                : "bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700/60"
+                            }`}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
-
-                  <div className="space-y-3">
-                    {group.skills.map((skill, sIdx) => (
-                      <div
-                        key={sIdx}
-                        className="p-3.5 rounded-lg border border-white/[0.06] bg-[#06080F]/70 hover:border-white/20 transition-all space-y-1.5"
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="font-mono text-xs font-bold text-slate-100">
-                            {skill.name}
-                          </span>
-                          {getLevelBadge(skill.level)}
-                        </div>
-                        <p className="text-[11px] text-slate-400 leading-relaxed">
-                          {skill.context}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </Container>
     </section>
   );

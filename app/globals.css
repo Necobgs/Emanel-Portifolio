@@ -1,6 +1,54 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  /* Cores de Superfície em Modo Claro (Slate Técnico, White Puro & Off-White) */
+  --bg-canvas: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --bg-surface-subtle: #f8fafc;
+
+  /* Linhas e Bordas Refinadas para Modo Claro */
+  --border-subtle: #e2e8f0;
+  --border-default: #cbd5e1;
+  --border-strong: #94a3b8;
+  --border-accent: #0284c7;
+
+  /* Tipografia & Hierarquia para Modo Claro */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  /* Cores de Destaque Adaptadas para Fundo Claro */
+  --accent-cyan: #0284c7;
+  --accent-cyan-hover: #0369a1;
+  --accent-emerald: #059669;
+  --accent-emerald-hover: #047857;
+  --accent-amber: #d97706;
+  --accent-amber-hover: #b45309;
+  --accent-violet: #4f46e5;
+  --accent-coral: #e11d48;
+
+  /* Halos e Luzes Difusas Estratégicas para Modo Claro */
+  --glow-cyan: rgba(2, 132, 199, 0.12);
+  --glow-emerald: rgba(5, 150, 105, 0.12);
+  --glow-amber: rgba(217, 119, 6, 0.10);
+  --glow-violet: rgba(79, 70, 229, 0.12);
+
+  /* Dimensões & Raios */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Tipografia base */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.dark {
   /* Cores de Superfície Cinematográfica (Midnight Charcoal & Deep Obsidian) */
   --bg-canvas: #06080f;
   --bg-surface: #0b0f19;
@@ -18,7 +66,7 @@
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
-  /* Cores de Destaque Cinematográficas (Inspiradas em Iluminação Rockstar/GTA VI) */
+  /* Cores de Destaque Cinematográficas */
   --accent-cyan: #00f2fe;
   --accent-cyan-hover: #38bdf8;
   --accent-emerald: #10b981;
@@ -33,17 +81,6 @@
   --glow-emerald: rgba(16, 185, 129, 0.22);
   --glow-amber: rgba(245, 158, 11, 0.18);
   --glow-violet: rgba(99, 102, 241, 0.22);
-
-  /* Dimensões & Raios */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-
-  /* Tipografia base */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 @theme inline {
@@ -88,22 +125,61 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Grid técnico com iluminação cinematográfica */
+/* Grid técnico de base */
 .bg-tech-grid {
   background-image: 
-    linear-gradient(to right, rgba(30, 41, 64, 0.45) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30, 41, 64, 0.45) 1px, transparent 1px);
+    linear-gradient(to right, rgba(148, 163, 184, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
   background-size: 36px 36px;
+}
+
+.dark .bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 64, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 64, 0.6) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Grade LED interativa reagente ao cursor (apenas as linhas acendem) */
+.bg-led-grid {
+  background-image: 
+    linear-gradient(to right, rgba(2, 132, 199, 0.95) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.95) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+  filter: drop-shadow(0 0 5px rgba(2, 132, 199, 0.8)) drop-shadow(0 0 12px rgba(2, 132, 199, 0.45));
+}
+
+.dark .bg-led-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 242, 254, 0.95) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(0, 242, 254, 0.95) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+  filter: drop-shadow(0 0 6px rgba(0, 242, 254, 0.95)) drop-shadow(0 0 14px rgba(0, 242, 254, 0.6));
+}
+
+/* Custom Cursor styling */
+@media (pointer: fine) {
+  html.custom-cursor-enabled,
+  html.custom-cursor-enabled * {
+    cursor: none !important;
+  }
 }
 
 /* Superfície Cinematográfica com Reflexo Superior (Rim Light) */
 .cinematic-surface {
   position: relative;
-  background: rgba(11, 15, 25, 0.82);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(35, 47, 72, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .cinematic-surface {
+  background: rgba(11, 15, 25, 0.82);
+  border: 1px solid rgba(35, 47, 72, 0.85);
+  box-shadow: none;
 }
 
 .cinematic-surface::before {
@@ -113,23 +189,39 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 242, 254, 0.35) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(2, 132, 199, 0.35) 50%, transparent 100%);
   pointer-events: none;
 }
 
+.dark .cinematic-surface::before {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 242, 254, 0.35) 50%, transparent 100%);
+}
+
 .cinematic-surface:hover {
+  border-color: rgba(2, 132, 199, 0.4);
+  box-shadow: 0 12px 35px -10px rgba(2, 132, 199, 0.12);
+}
+
+.dark .cinematic-surface:hover {
   border-color: rgba(0, 242, 254, 0.35);
   box-shadow: 0 12px 35px -10px rgba(0, 242, 254, 0.12);
 }
 
-/* Superfície Quente com Reflexo Âmbar / Coral */
+/* Superfície Âmbar */
 .cinematic-surface-amber {
   position: relative;
-  background: rgba(14, 17, 26, 0.82);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(40, 45, 60, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .cinematic-surface-amber {
+  background: rgba(14, 17, 26, 0.82);
+  border: 1px solid rgba(40, 45, 60, 0.85);
+  box-shadow: none;
 }
 
 .cinematic-surface-amber::before {
@@ -139,11 +231,20 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.35) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(217, 119, 6, 0.35) 50%, transparent 100%);
   pointer-events: none;
 }
 
+.dark .cinematic-surface-amber::before {
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.35) 50%, transparent 100%);
+}
+
 .cinematic-surface-amber:hover {
+  border-color: rgba(217, 119, 6, 0.45);
+  box-shadow: 0 12px 35px -10px rgba(217, 119, 6, 0.14);
+}
+
+.dark .cinematic-surface-amber:hover {
   border-color: rgba(245, 158, 11, 0.4);
   box-shadow: 0 12px 35px -10px rgba(245, 158, 11, 0.12);
 }

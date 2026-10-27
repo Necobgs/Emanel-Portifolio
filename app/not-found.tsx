@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#06080F] text-slate-100 flex flex-col justify-center items-center py-20 px-4 selection:bg-cyan-500/25 selection:text-cyan-200 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#06080F] dark:text-slate-100 flex flex-col justify-center items-center py-20 px-4 selection:bg-cyan-500/25 selection:text-cyan-900 dark:selection:text-cyan-200 relative overflow-hidden transition-colors">
       {/* Luzes atmosféricas de fundo */}
       <div
         aria-hidden="true"
@@ -14,21 +14,21 @@ export default function NotFound() {
       />
 
       <Container size="sm" className="text-center space-y-6 relative z-10">
-        <div className="w-16 h-16 rounded-2xl border border-cyan-500/30 bg-cyan-950/40 flex items-center justify-center text-cyan-300 mx-auto shadow-[0_0_25px_rgba(0,242,254,0.25)]">
+        <div className="w-16 h-16 rounded-2xl border border-cyan-200 bg-cyan-50 dark:border-cyan-500/30 dark:bg-cyan-950/40 flex items-center justify-center text-cyan-600 dark:text-cyan-300 mx-auto shadow-[0_0_25px_rgba(2,132,199,0.15)] dark:shadow-[0_0_25px_rgba(0,242,254,0.25)]">
           <Terminal className="w-8 h-8" />
         </div>
 
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 dark:bg-cyan-950/40 dark:border-cyan-500/30 dark:text-cyan-300 font-mono text-xs">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
             <span>HTTP_STATUS_404: RESOURCE_NOT_FOUND</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Página Não Encontrada
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-300 max-w-md mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
             A rota ou recurso solicitado não existe ou foi movido. Verifique o endereço digitado ou retorne à navegação principal.
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function NotFound() {
           </Link>
         </div>
 
-        <div className="pt-8 border-t border-white/[0.08] text-xs font-mono text-slate-500">
+        <div className="pt-8 border-t border-slate-200 dark:border-white/[0.08] text-xs font-mono text-slate-500">
           <span>Emanuel Borges de Oliveira • Engenharia de Software &amp; Automação</span>
         </div>
       </Container>

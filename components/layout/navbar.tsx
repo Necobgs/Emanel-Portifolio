@@ -7,6 +7,7 @@ import { Terminal, Menu, X, ArrowRight, Download } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { SystemBadge } from "@/components/ui/system-badge";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { profileData } from "@/data/profile";
 
 export function Navbar() {
@@ -40,28 +41,27 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#06080F]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.7)] py-2.5"
-          : "bg-[#06080F]/60 backdrop-blur-md border-b border-transparent py-4"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-white/85 dark:bg-[#06080F]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.7)] py-2.5"
+          : "bg-white/60 dark:bg-[#06080F]/60 backdrop-blur-md border-b border-transparent py-4"
+        }`}
     >
       <Container size="xl">
         <div className="flex items-center justify-between">
           {/* Marca Tipográfica */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded p-1"
+            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded p-1"
             aria-label="Emanuel Borges de Oliveira — Início"
           >
-            <div className="w-8 h-8 rounded-lg border border-cyan-500/30 bg-cyan-950/40 flex items-center justify-center text-cyan-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,242,254,0.35)] transition-all">
+            <div className="w-8 h-8 rounded-lg border border-cyan-500/25 bg-cyan-50 dark:border-cyan-500/30 dark:bg-cyan-950/40 flex items-center justify-center text-cyan-600 dark:text-cyan-300 group-hover:border-cyan-500 group-hover:shadow-[0_0_15px_rgba(2,132,199,0.25)] dark:group-hover:shadow-[0_0_15px_rgba(0,242,254,0.35)] transition-all">
               <Terminal className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-xs sm:text-sm font-bold text-white group-hover:text-cyan-200 transition-colors tracking-tight">
+              <span className="font-mono text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors tracking-tight">
                 Emanuel Borges
               </span>
-              <span className="font-mono text-[10px] text-slate-400 leading-none">
+              <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 leading-none">
                 backend &amp; rpa
               </span>
             </div>
@@ -70,13 +70,13 @@ export function Navbar() {
           {/* Navegação Desktop */}
           <nav
             aria-label="Navegação principal"
-            className="hidden md:flex items-center gap-1 bg-[#0B0F19]/90 border border-white/[0.08] px-3 py-1.5 rounded-full shadow-inner"
+            className="hidden md:flex items-center gap-1 bg-slate-100/90 dark:bg-[#0B0F19]/90 border border-slate-200/90 dark:border-white/[0.08] px-3 py-1.5 rounded-full shadow-inner"
           >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3.5 py-1 text-xs font-mono font-medium text-slate-300 hover:text-white hover:bg-white/[0.08] rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                className="px-3.5 py-1 text-xs font-mono font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-white/[0.08] rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
               >
                 {link.label}
               </a>
@@ -86,6 +86,7 @@ export function Navbar() {
           {/* CTAs Desktop */}
           <div className="hidden lg:flex items-center gap-3">
             <SystemBadge status="active" code="CRICIÚMA - SC" />
+            <ThemeToggle />
             <a href="#projetos">
               <Button size="sm" variant="primary" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
                 Ver Projetos
@@ -93,14 +94,15 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Botão Mobile */}
+          {/* Botões Mobile */}
           <div className="flex md:hidden items-center gap-2">
-            <SystemBadge status="active" className="px-2 py-0.5 text-[10px]" />
+            <SystemBadge status="active" code="CRICIÚMA - SC" className="px-2 py-0.5 text-[10px]" />
+            <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-              className="p-2 rounded-lg border border-white/[0.08] bg-[#0B0F19] text-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
+              className="p-2 rounded-lg border border-slate-200 bg-white dark:border-white/[0.08] dark:bg-[#0B0F19] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 cursor-pointer shadow-sm"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
@@ -115,7 +117,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="md:hidden mt-3 rounded-xl border border-white/[0.08] cinematic-surface p-4 shadow-[0_20px_50px_rgba(0,0,0,0.8)] space-y-3"
+              className="md:hidden mt-3 rounded-xl border border-slate-200 dark:border-white/[0.08] cinematic-surface p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)] space-y-3"
             >
               <nav className="flex flex-col space-y-1">
                 {navLinks.map((link) => (
@@ -123,13 +125,13 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-3 py-2 text-xs font-mono text-slate-300 hover:text-white hover:bg-white/[0.08] rounded-lg transition-colors"
+                    className="px-3 py-2 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] rounded-lg transition-colors"
                   >
                     {link.label}
                   </a>
                 ))}
               </nav>
-              <div className="pt-3 border-t border-white/[0.08] flex flex-col gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-white/[0.08] flex flex-col gap-2">
                 <a
                   href="#projetos"
                   onClick={() => setMobileMenuOpen(false)}
