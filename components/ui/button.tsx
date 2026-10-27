@@ -7,6 +7,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   icon?: React.ReactNode;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export function Button({
@@ -18,6 +21,9 @@ export function Button({
   icon,
   children,
   disabled,
+  href,
+  target,
+  rel,
   ...props
 }: ButtonProps) {
   const leadingIcon = leftIcon || icon;
@@ -44,8 +50,25 @@ export function Button({
     outline:
       "bg-transparent hover:bg-slate-100 active:bg-slate-200 text-slate-800 hover:text-cyan-700 border border-slate-300 hover:border-cyan-500/60 shadow-sm dark:bg-transparent dark:hover:bg-cyan-500/10 dark:active:bg-cyan-500/20 dark:text-[#f8fafc] dark:hover:text-cyan-300 dark:border-[#232f48] dark:hover:border-cyan-400/60",
     ghost:
-      "bg-transparent hover:bg-slate-100 active:bg-slate-200 text-slate-600 hover:text-slate-900 dark:bg-transparent dark:hover:bg-[#111726]/80 dark:active:bg-[#111726] dark:text-[#94a3b8] dark:hover:text-[#f8fafc]",
+      "bg-transparent hover:bg-slate-100 active:bg-slate-200 text-slate-700 hover:text-slate-900 dark:bg-transparent dark:hover:bg-[#111726]/80 dark:active:bg-[#111726] dark:text-[#94a3b8] dark:hover:text-[#f8fafc]",
   };
+
+  if (href) {
+    const isExternal = target === "_blank" || href.startsWith("http");
+    return (
+      <a
+        href={href}
+        target={target}
+        rel={rel || (isExternal ? "noopener noreferrer" : undefined)}
+        className={cn(baseStyles, sizeStyles[size], variantStyles[variant], className)}
+        {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {leadingIcon && <span className="shrink-0" aria-hidden="true">{leadingIcon}</span>}
+        <span>{children}</span>
+        {rightIcon && <span className="shrink-0" aria-hidden="true">{rightIcon}</span>}
+      </a>
+    );
+  }
 
   return (
     <button
@@ -53,9 +76,9 @@ export function Button({
       disabled={disabled}
       {...props}
     >
-      {leadingIcon && <span className="shrink-0">{leadingIcon}</span>}
+      {leadingIcon && <span className="shrink-0" aria-hidden="true">{leadingIcon}</span>}
       <span>{children}</span>
-      {rightIcon && <span className="shrink-0">{rightIcon}</span>}
+      {rightIcon && <span className="shrink-0" aria-hidden="true">{rightIcon}</span>}
     </button>
   );
 }

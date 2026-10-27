@@ -68,19 +68,19 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.05,
+        staggerChildren: 0.04,
+        delayChildren: 0,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.45,
+        duration: 0.25,
         ease: "easeOut" as const,
       },
     },
@@ -93,13 +93,13 @@ export function HeroSection() {
       onMouseLeave={handleMouseLeave}
       className="relative min-h-[100dvh] flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden border-b border-slate-200 dark:border-[#172033]"
     >
-      {/* Luzes Difusas de Fundo Harmonizadas */}
+      {/* Luzes Difusas de Fundo Otimizadas */}
       <div
-        className="absolute top-0 right-10 w-[600px] h-[600px] bg-gradient-to-br from-cyan-400/15 via-indigo-400/10 to-transparent dark:from-cyan-500/18 dark:via-indigo-600/12 rounded-full blur-[110px] pointer-events-none -z-0 animate-ambient-pulse"
+        className="absolute top-0 right-10 w-[500px] sm:w-[600px] h-[500px] sm:h-[600px] bg-gradient-to-br from-cyan-400/15 via-indigo-400/10 to-transparent dark:from-cyan-500/18 dark:via-indigo-600/12 rounded-full blur-[65px] sm:blur-[110px] pointer-events-none -z-0 animate-ambient-pulse"
         aria-hidden="true"
       />
       <div
-        className="absolute -bottom-20 -left-10 w-[500px] h-[500px] bg-gradient-to-tr from-teal-400/12 via-sky-400/8 to-transparent dark:from-teal-500/12 dark:via-sky-600/8 rounded-full blur-[110px] pointer-events-none -z-0"
+        className="absolute -bottom-20 -left-10 w-[400px] sm:w-[500px] h-[400px] sm:h-[500px] bg-gradient-to-tr from-teal-400/12 via-sky-400/8 to-transparent dark:from-teal-500/12 dark:via-sky-600/8 rounded-full blur-[65px] sm:blur-[110px] pointer-events-none -z-0"
         aria-hidden="true"
       />
 
@@ -144,7 +144,7 @@ export function HeroSection() {
             {/* Descrição de Atuação */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-slate-600 dark:text-[#94a3b8] leading-relaxed max-w-2xl text-center"
+              className="text-base sm:text-lg text-slate-700 dark:text-[#cbd5e1] leading-relaxed max-w-2xl text-center font-medium"
             >
               Backend Engineer | RPA Software Automation
             </motion.p>
@@ -152,32 +152,39 @@ export function HeroSection() {
             {/* Frase de Posicionamento / Manifesto (linha única sem quebra) */}
             <motion.p
               variants={itemVariants}
-              className="text-[clamp(9.5px,2.75vw,16.5px)] font-medium text-slate-700 dark:text-cyan-200/90 tracking-tight whitespace-nowrap text-center max-w-full px-2"
+              className="text-[clamp(9.5px,2.75vw,16.5px)] font-medium text-slate-800 dark:text-cyan-200 tracking-tight whitespace-nowrap text-center max-w-full px-2"
             >
               &ldquo;Mais do que desenvolver software, entender o negócio e resolver problemas&rdquo;
             </motion.p>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 pt-3 sm:pt-5 justify-center">
-              <a href="#projetos">
-                <Button variant="primary" size="lg" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                  Explorar Projetos
-                </Button>
-              </a>
-              <a href="#contato">
-                <Button variant="secondary" size="lg" leftIcon={<Terminal className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />}>
-                  Entrar em Contato
-                </Button>
-              </a>
-              <a
+              <Button
+                href="#projetos"
+                variant="primary"
+                size="lg"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Explorar Projetos
+              </Button>
+              <Button
+                href="#contato"
+                variant="secondary"
+                size="lg"
+                leftIcon={<Terminal className="w-4 h-4 text-cyan-700 dark:text-cyan-400" />}
+              >
+                Entrar em Contato
+              </Button>
+              <Button
                 href={profileData.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                variant="outline"
+                size="lg"
+                leftIcon={<FileDown className="w-4 h-4 text-slate-600 dark:text-slate-300" />}
               >
-                <Button variant="outline" size="lg" leftIcon={<FileDown className="w-4 h-4 text-slate-500 dark:text-[#94a3b8]" />}>
-                  Currículo PDF
-                </Button>
-              </a>
+                Currículo PDF
+              </Button>
             </motion.div>
 
             {/* Links de Perfil Profissional */}
@@ -189,7 +196,7 @@ export function HeroSection() {
                 href={profileData.github}
                 external
                 variant="mono"
-                icon={<GithubIcon className="w-3.5 h-3.5 text-slate-700 dark:text-slate-300" />}
+                icon={<GithubIcon className="w-3.5 h-3.5 text-slate-800 dark:text-slate-200" />}
               >
                 github.com/Necobgs
               </ActionLink>
@@ -198,7 +205,7 @@ export function HeroSection() {
                 href={profileData.linkedin}
                 external
                 variant="mono"
-                icon={<LinkedinIcon className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />}
+                icon={<LinkedinIcon className="w-3.5 h-3.5 text-cyan-700 dark:text-cyan-400" />}
               >
                 linkedin.com/in/emanuel-bgs-dev
               </ActionLink>
@@ -207,7 +214,7 @@ export function HeroSection() {
                 href={profileData.whatsapp}
                 external
                 variant="mono"
-                icon={<WhatsappIcon className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />}
+                icon={<WhatsappIcon className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />}
               >
                 WhatsApp Direto
               </ActionLink>

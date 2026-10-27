@@ -21,29 +21,19 @@ export function CasesSection() {
       ? projectsData
       : projectsData.filter((p) => p.category === (activeCategory as ProjectCategory));
 
-  const getActiveFilterStyle = (cat: string) => {
-    switch (cat) {
-      case "Backend & Orquestração":
-        return "bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold shadow-[0_0_15px_rgba(2,132,199,0.35)]";
-      case "RPA & Automação":
-        return "bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold shadow-[0_0_15px_rgba(16,185,129,0.35)]";
-      case "Desktop & .NET":
-        return "bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold shadow-[0_0_15px_rgba(168,85,247,0.35)]";
-      default:
-        return "bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-bold shadow-[0_0_15px_rgba(2,132,199,0.35)]";
-    }
-  };
-
   return (
-    <section id="projetos" className="min-h-[100dvh] py-20 md:py-24 flex flex-col justify-center border-t border-slate-200 dark:border-white/[0.06] relative bg-slate-50 dark:bg-[#06080F] overflow-hidden">
+    <section
+      id="projetos"
+      className="min-h-[100dvh] py-20 md:py-24 flex flex-col justify-center border-t border-slate-200 dark:border-white/[0.06] relative bg-slate-50 dark:bg-[#06080F] overflow-hidden content-visibility-auto"
+    >
       {/* Luzes atmosféricas de fundo */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-10 left-1/3 w-[650px] h-[450px] bg-gradient-to-br from-cyan-500/10 via-indigo-600/5 to-transparent blur-[150px] rounded-full"
+        className="pointer-events-none absolute top-10 left-1/3 w-[500px] sm:w-[650px] h-[350px] sm:h-[450px] bg-gradient-to-br from-cyan-500/10 via-indigo-600/5 to-transparent blur-[60px] sm:blur-[140px] rounded-full"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-10 right-10 w-[550px] h-[350px] bg-gradient-to-tl from-emerald-500/10 via-teal-500/5 to-transparent blur-[140px] rounded-full"
+        className="pointer-events-none absolute bottom-10 right-10 w-[400px] sm:w-[550px] h-[280px] sm:h-[350px] bg-gradient-to-tl from-emerald-500/10 via-teal-500/5 to-transparent blur-[60px] sm:blur-[140px] rounded-full"
       />
 
       <Container size="xl" className="relative z-10 w-full my-auto">
@@ -61,27 +51,36 @@ export function CasesSection() {
               </span>
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
               Cases detalhados focados em resolução de problemas reais, compondo
               automação resiliente de processos, mensageria e desenvolvimento de ferramentas corporativas.
             </p>
           </div>
 
           {/* Filtros de Categoria */}
-          <div className="flex flex-wrap gap-1.5 bg-slate-100/90 dark:bg-[#0B0F19]/90 p-1.5 rounded-xl border border-slate-200 dark:border-white/[0.08] backdrop-blur-md self-start md:self-end">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
-                  activeCategory === cat
-                    ? getActiveFilterStyle(cat)
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/[0.05]"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div
+            role="tablist"
+            aria-label="Filtrar projetos por categoria"
+            className="flex flex-wrap gap-1.5 bg-slate-100 dark:bg-[#0B0F19] p-1.5 rounded-xl border border-slate-200 dark:border-white/[0.08] backdrop-blur-md self-start md:self-end"
+          >
+            {categories.map((cat) => {
+              const isSelected = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? "bg-slate-900 text-white dark:bg-cyan-500/25 dark:text-cyan-200 dark:border dark:border-cyan-400/50 font-bold shadow-sm"
+                      : "text-slate-700 hover:text-slate-950 hover:bg-slate-200/80 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/[0.08]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
           </div>
         </div>
 
