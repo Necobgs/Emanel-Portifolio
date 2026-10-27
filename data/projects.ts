@@ -8,6 +8,12 @@ export interface TechnicalDecision {
   rationale: string;
 }
 
+export interface ProjectMetric {
+  value: string;
+  label: string;
+  description?: string;
+}
+
 export interface ProjectDetail {
   slug: string;
   title: string;
@@ -16,7 +22,9 @@ export interface ProjectDetail {
   category: ProjectCategory;
   status: "Em Produção" | "Concluído" | "Em Desenvolvimento" | "Estudo Aplicado";
   featured: boolean;
+  starred?: boolean;
   isConfidential?: boolean;
+  metrics?: ProjectMetric[];
   context: string;
   problem: string;
   objective: string;
@@ -26,7 +34,7 @@ export interface ProjectDetail {
   technicalDecisions: TechnicalDecision[];
   challengesAndLearnings: string[];
   techStack: string[];
-  diagramType?: "orchestration" | "rpa-engine" | "wpf-desktop";
+  diagramType?: "orchestration" | "rpa-engine" | "wpf-desktop" | "reverse-engineering";
   githubUrl?: string;
   liveUrl?: string;
   plannedFeatures?: string[];
@@ -44,7 +52,25 @@ export const projectsData: ProjectDetail[] = [
     category: "Backend & Orquestração",
     status: "Em Produção",
     featured: true,
+    starred: true,
     isConfidential: true,
+    metrics: [
+      {
+        value: "100%",
+        label: "Visibilidade Operacional",
+        description: "Rastreio fim a fim de estados, logs e jobs em tempo real",
+      },
+      {
+        value: "Assíncrono",
+        label: "Arquitetura com Filas",
+        description: "RabbitMQ desacoplando workers de robôs corporativos",
+      },
+      {
+        value: "Auditável",
+        label: "Histórico Transacional",
+        description: "Persistência segura em PostgreSQL com Job ID correlacionado",
+      },
+    ],
     context:
       "Ambiente corporativo com dezenas de tarefas repetitivas e rotinas operacionais sem controle centralizado de estados ou dependências (código proprietário corporativo sob sigilo/NDA).",
     problem:
@@ -85,6 +111,91 @@ export const projectsData: ProjectDetail[] = [
     ],
     techStack: ["NestJS", "TypeScript", "RabbitMQ", "Redis", "PostgreSQL", "Docker", "Python"],
     diagramType: "orchestration",
+  },
+  {
+    slug: "refatoracao-scraper-santander",
+    title: "Refatoração de Scraper de Dados no Santander",
+    tagline:
+      "Otimização assíncrona de alta escala: redução de 24h para 6h (-75% no tempo) processando 22.000 requisições com bypass de Akamai e criptografia assimétrica.",
+    summary:
+      "Refatoração arquitetural de um scraper corporativo no portal do Santander que escalou de 1.000 para 22.000 clientes. A eliminação da camada de navegador (Selenium) e a migração para requisições assíncronas paralelas com engenharia reversa de criptografia proprietária e bypass de Akamai reduziu o tempo de execução de 24 horas para 6 horas (-75%).",
+    category: "RPA & Automação",
+    status: "Em Produção",
+    featured: true,
+    starred: true,
+    isConfidential: true,
+    metrics: [
+      {
+        value: "-75%",
+        label: "Redução no Tempo",
+        description: "De 24 horas para 6 horas (uma tarde)",
+      },
+      {
+        value: "22.000",
+        label: "Raspagens por Ciclo",
+        description: "Escala massiva de 1.000 para 22 mil clientes (+2.100%)",
+      },
+      {
+        value: "4x Mais Rápido",
+        label: "Ganho em Performance",
+        description: "Requisições paralelas assíncronas sem camada de navegador",
+      },
+      {
+        value: "100% Sucesso",
+        label: "Bypass & Reversão",
+        description: "Akamai contornado e lib assimétrica replicada com Grok no Cursor",
+      },
+    ],
+    context:
+      "Ambiente corporativo de alta criticidade com necessidade de raspagem massiva de dados no portal do Santander. Originalmente, o robô havia sido construído sobre Selenium por conta da stack principal da Góes na época. Contudo, a base de clientes a consultar aumentou drasticamente de 1.000 para 22.000 raspagens, ultrapassando os limites operacionais aceitáveis.",
+    problem:
+      "Com a explosão de 1.000 para 22.000 raspagens, o robô baseado em Selenium levava mais de 24 horas ininterruptas de processamento. A sobrecarga de memória do navegador, a lentidão de renderização do DOM e a instabilidade de conexões prolongadas tornavam a operação vulnerável a falhas e inviável para o negócio.",
+    objective:
+      "Refatorar completamente o scraper eliminando a camada pesada do navegador e construindo uma arquitetura de requisições paralelas assíncronas. Os requisitos incluíam contornar a proteção anti-bot do Akamai e decodificar a criptografia assimétrica proprietária do portal para concluir todo o lote de 22.000 clientes no intervalo de uma tarde (até 6 horas).",
+    solution:
+      "A solução eliminou o navegador do fluxo de raspagem massiva, replicando as chamadas HTTP diretamente em nível assíncrono paralelo com controle rigoroso de concorrência. Para contornar o anti-bot do Akamai (que analisa scripts ofuscados e telemetria do navegador para validar a sessão), o Playwright foi utilizado pontualmente para carregar os scripts e extrair os tokens/cookies válidos. Em seguida, utilizando o Grok 4.7 no Cursor IDE durante a inspeção detalhada das requisições, realizou-se a engenharia reversa da biblioteca interna de criptografia assimétrica do Santander, recriando-a em Python para assinar, cifrar e decifrar os payloads enviados e recebidos com latência mínima.",
+    contribution:
+      "Diagnóstico e redesign arquitetural completo do robô, migrando de Selenium para chamadas assíncronas; engenharia reversa da biblioteca de criptografia assimétrica com auxílio de IA no Cursor IDE; estratégia de handshake e extração de tokens do Akamai via Playwright; e implementação de paralelismo assíncrono com rate limit para 22.000 clientes em produção.",
+    architectureHighlights: [
+      "Eliminação total do overhead de navegador no loop principal de raspagem",
+      "Processamento assíncrono paralelo escalado de 1.000 para 22.000 raspagens",
+      "Bypass resiliente do anti-bot Akamai com Playwright headless no handshake",
+      "Engenharia reversa e replicação em Python da criptografia assimétrica interna",
+      "Redução comprovada do tempo total de 24 horas para 6 horas (-75%)",
+    ],
+    technicalDecisions: [
+      {
+        title: "Migração de Selenium para Requisições Assíncronas Diretas",
+        rationale:
+          "O navegador consumia gigabytes de memória e adicionava dezenas de segundos por página. Disparar chamadas HTTP assíncronas reduziu o tempo por requisição para centenas de milissegundos e permitiu paralelismo real.",
+      },
+      {
+        title: "Playwright Pontual para Validação de Sessão Akamai",
+        rationale:
+          "O Akamai coleta sinais profundos do navegador. Ao invés de usar navegador para as 22.000 consultas, o Playwright é acionado apenas para inicializar a sessão e obter tokens e cookies válidos para o motor assíncrono.",
+      },
+      {
+        title: "Reversão da Criptografia Assimétrica com Cursor & Grok 4.7",
+        rationale:
+          "Os dados das requisições viajavam criptografados por uma biblioteca interna. A inspeção de rede combinada com a análise de código ofuscado pelo Grok 4.7 no Cursor permitiu reproduzir fielmente a lib de cifragem em Python puro.",
+      },
+    ],
+    challengesAndLearnings: [
+      "Interpretação e engenharia reversa de scripts JavaScript ofuscados que implementavam criptografia assimétrica no front-end.",
+      "Contorno de telemetria anti-bot avançada do Akamai sem disparar captchas ou bloqueios de IP corporativo.",
+      "Calibração de semáforos assíncronos para processar 22.000 requisições em paralelo sem estourar conexões do servidor de destino.",
+    ],
+    techStack: [
+      "Python",
+      "Asyncio",
+      "Playwright",
+      "Selenium",
+      "Engenharia Reversa",
+      "Criptografia Assimétrica",
+      "Akamai Anti-Bot",
+      "Cursor IDE & Grok 4.7",
+    ],
+    diagramType: "reverse-engineering",
   },
   {
     slug: "framework-integracoes-rpa",

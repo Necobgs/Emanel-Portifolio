@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Cpu, ExternalLink, Lock } from "lucide-react";
+import { ArrowRight, Cpu, ExternalLink, Lock, Star } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { ProjectDetail } from "@/data/projects";
 import { cn } from "@/lib/utils";
@@ -48,6 +48,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
     <article
       className={cn(
         "group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-white/[0.08] cinematic-surface p-6 sm:p-7 transition-all duration-300",
+        project.starred && "border-amber-400/40 dark:border-amber-500/35 shadow-[0_4px_25px_rgba(245,158,11,0.08)]",
         theme.hoverBorder,
         theme.hoverShadow,
         className
@@ -56,7 +57,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       <div>
         {/* Cabeçalho de Categorias e Links */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-medium border", theme.badge)}>
               <Cpu className={cn("w-3 h-3", theme.iconColor)} />
               {project.category}
@@ -64,6 +65,17 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-[#06080F]/80 border border-slate-200 dark:border-white/[0.06]">
               ● {project.status}
             </span>
+
+            {/* Estrela de Projeto de Maior Sucesso */}
+            {project.starred && (
+              <span
+                title="Projeto de maior sucesso e impacto técnico comprovado"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-800 border border-amber-300 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]"
+              >
+                <Star className="w-3 h-3 fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-300 shrink-0" />
+                <span>Maior Sucesso</span>
+              </span>
+            )}
           </div>
 
           {/* Links Externos Opcionais ou Indicador de Sigilo */}
@@ -103,10 +115,13 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         </div>
 
         {/* Título & Tagline */}
-        <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors tracking-tight">
+        <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors tracking-tight flex items-center gap-2">
           <Link href={`/projects/${project.slug}`} className="hover:underline underline-offset-4">
             {project.title}
           </Link>
+          {project.starred && (
+            <Star className="w-4 h-4 fill-amber-400 text-amber-500 shrink-0 inline-block drop-shadow-[0_0_6px_rgba(245,158,11,0.6)]" />
+          )}
         </h3>
         <p className="mt-1 text-xs font-mono font-medium text-emerald-700 dark:text-emerald-400/95">
           {project.tagline}
@@ -116,6 +131,21 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           {project.solution}
         </p>
+
+        {/* Métricas de Impacto em Destaque */}
+        {project.metrics && project.metrics.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-3.5">
+            {project.metrics.slice(0, 2).map((m, idx) => (
+              <div
+                key={idx}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/[0.08] dark:bg-amber-500/[0.12] border border-amber-500/30 text-[11px] font-mono"
+              >
+                <span className="font-bold text-amber-700 dark:text-amber-300">{m.value}</span>
+                <span className="text-slate-700 dark:text-slate-300">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/[0.08] space-y-4">

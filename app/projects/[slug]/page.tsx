@@ -14,6 +14,7 @@ import {
   AlertTriangle,
   UserCheck,
   Lock,
+  Star,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -116,19 +117,28 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         {/* Cabeçalho do Case */}
         <Container size="xl">
           <div className="max-w-4xl space-y-5">
-            {/* Breadcrumb / Categoria */}
+            {/* Breadcrumb / Categoria / Destaque de Maior Sucesso */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-cyan-50 text-cyan-800 border border-cyan-200 dark:bg-cyan-950/40 dark:text-cyan-300 dark:border-cyan-500/30">
                 <Cpu className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                 {project.category}
               </span>
+              {project.starred && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-800 border border-amber-300 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-500/40 shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                  <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-300" />
+                  <span>Projeto de Maior Sucesso</span>
+                </span>
+              )}
               <span className="text-xs font-mono text-slate-400 dark:text-slate-500">•</span>
               <span className="text-xs font-mono text-slate-500 dark:text-slate-400">Estudo de Caso Técnico</span>
             </div>
 
             {/* Título Principal */}
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-              {project.title}
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.15] flex items-center gap-3">
+              <span>{project.title}</span>
+              {project.starred && (
+                <Star className="w-6 h-6 sm:w-8 sm:h-8 fill-amber-400 text-amber-500 shrink-0 inline-block drop-shadow-[0_0_10px_rgba(245,158,11,0.6)]" />
+              )}
             </h1>
 
             {/* Tagline de impacto */}
@@ -140,6 +150,30 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
               {project.summary}
             </p>
+
+            {/* Grid de Métricas de Alto Impacto */}
+            {project.metrics && project.metrics.length > 0 && (
+              <div className="pt-3 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {project.metrics.map((metric, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 rounded-xl border border-amber-400/40 bg-amber-500/[0.04] dark:bg-amber-500/[0.08] dark:border-amber-500/30 backdrop-blur-xs space-y-1 shadow-xs"
+                  >
+                    <div className="text-2xl sm:text-3xl font-extrabold text-amber-700 dark:text-amber-300 font-mono tracking-tight">
+                      {metric.value}
+                    </div>
+                    <div className="text-xs font-mono font-bold text-slate-900 dark:text-white">
+                      {metric.label}
+                    </div>
+                    {metric.description && (
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-tight">
+                        {metric.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Links / Indicador de Confidencialidade */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
