@@ -22,10 +22,10 @@ export interface SkillGroup {
 
 export const skillsData: SkillGroup[] = [
   {
-    id: "backend",
-    category: "Backend & APIs",
+    id: "languages-frameworks",
+    category: "Linguagens & Frameworks",
     description:
-      "Construção de APIs corporativas estruturadas, regras de negócio e serviços assíncronos.",
+      "Base de código, lógica analítica de negócio e ambientes de execução corporativos.",
     skills: [
       {
         name: "TypeScript",
@@ -43,7 +43,7 @@ export const skillsData: SkillGroup[] = [
       },
       {
         name: "NestJS",
-        context: "Arquitetura modular corporativa, injeção de dependência e APIs corporativas.",
+        context: "Arquitetura modular corporativa, injeção de dependência e APIs robustas.",
         level: "Uso Profissional Contínuo",
         rating: 5,
         status: "Produção",
@@ -56,27 +56,34 @@ export const skillsData: SkillGroup[] = [
         status: "Produção",
       },
       {
-        name: "APIs REST",
-        context: "Desenho de endpoints RESTful, contratos HTTP bem definidos e tratamento de erros.",
-        level: "Uso Profissional Contínuo",
-        rating: 5,
-        status: "Produção",
+        name: "Golang",
+        context: "Prática em concorrência (goroutines/canais) e cache geoespacial com Redis no projeto Move Fast.",
+        level: "Aprendizado Complementar",
+        rating: 3,
+        status: "Estudo",
+      },
+      {
+        name: "C# / .NET",
+        context: "Estudo de arquitetura orientada a objetos no ecossistema Microsoft e backend corporativo.",
+        level: "Aprendizado Complementar",
+        rating: 3,
+        status: "Estudo",
+      },
+      {
+        name: "WPF (Windows Desktop)",
+        context: "Exploração de desenvolvimento desktop corporativo para utilitários de suporte operacional.",
+        level: "Aprendizado Complementar",
+        rating: 3,
+        status: "Estudo",
       },
     ],
   },
   {
-    id: "rpa",
-    category: "RPA & Automação de Processos",
+    id: "automation-integrations",
+    category: "Automação & Integrações",
     description:
-      "Desenvolvimento de robôs para fluxos operacionais de alta complexidade e rotinas headless.",
+      "Desenvolvimento de robôs (RPA), rotinas headless, emulação de navegação e integração entre sistemas.",
     skills: [
-      {
-        name: "Automações em Python",
-        context: "Extração, transformação de dados e orquestração de rotinas em lote sem intervenção manual.",
-        level: "Uso Profissional Contínuo",
-        rating: 5,
-        status: "Produção",
-      },
       {
         name: "Playwright",
         context: "Automação moderna de navegadores headless com tratamento de concorrência e seletores dinâmicos.",
@@ -92,6 +99,20 @@ export const skillsData: SkillGroup[] = [
         status: "Produção",
       },
       {
+        name: "Automações em Python",
+        context: "Extração, transformação de dados e orquestração de rotinas em lote sem intervenção manual.",
+        level: "Uso Profissional Contínuo",
+        rating: 5,
+        status: "Produção",
+      },
+      {
+        name: "APIs REST",
+        context: "Desenho de endpoints RESTful, contratos HTTP bem definidos e tratamento estruturado de erros.",
+        level: "Uso Profissional Contínuo",
+        rating: 5,
+        status: "Produção",
+      },
+      {
         name: "Integrações HTTP",
         context: "Consumo de endpoints externos, controle de rate-limit, retries e autenticações complexas.",
         level: "Uso Profissional Contínuo",
@@ -101,14 +122,14 @@ export const skillsData: SkillGroup[] = [
     ],
   },
   {
-    id: "database",
-    category: "Bancos de Dados & SQL",
+    id: "data-messaging",
+    category: "Dados & Mensageria",
     description:
-      "Persistência relacional, garantia de integridade transacional e consultas otimizadas.",
+      "Persistência relacional ACID, cache em memória, modelagem e mensageria distribuída.",
     skills: [
       {
         name: "PostgreSQL",
-        context: "Modelagem de dados, índices, constraints e transações ACID em aplicações de produção.",
+        context: "Modelagem de dados, índices, constraints e transações ACID em aplicações corporativas.",
         level: "Uso Profissional Contínuo",
         rating: 5,
         status: "Produção",
@@ -122,23 +143,8 @@ export const skillsData: SkillGroup[] = [
       },
       {
         name: "SQL & Modelagem",
-        context: "Estruturação de consultas, joins complexos, agregação e normalização de dados.",
+        context: "Estruturação de consultas, joins complexos, agregação e normalização relacional.",
         level: "Uso Profissional Contínuo",
-        rating: 5,
-        status: "Produção",
-      },
-    ],
-  },
-  {
-    id: "messaging-infra",
-    category: "Mensageria & Infraestrutura",
-    description:
-      "Comunicação assíncrona, isolamento em contêineres e esteiras de entrega contínua.",
-    skills: [
-      {
-        name: "RabbitMQ",
-        context: "Orquestração de filas de mensagens, buffers de tarefas e desacoplamento de serviços.",
-        level: "Produção & Integração",
         rating: 5,
         status: "Produção",
       },
@@ -149,6 +155,21 @@ export const skillsData: SkillGroup[] = [
         rating: 4,
         status: "Produção",
       },
+      {
+        name: "RabbitMQ",
+        context: "Orquestração de filas de mensagens, buffers de tarefas e desacoplamento de serviços.",
+        level: "Produção & Integração",
+        rating: 5,
+        status: "Produção",
+      },
+    ],
+  },
+  {
+    id: "devops-observability",
+    category: "DevOps & Observabilidade",
+    description:
+      "Isolamento em contêineres, esteiras CI/CD, gestão de credenciais e telemetria operacional.",
+    skills: [
       {
         name: "Docker",
         context: "Padronização de ambientes de desenvolvimento e conteinerização de microsserviços.",
@@ -170,14 +191,6 @@ export const skillsData: SkillGroup[] = [
         rating: 4,
         status: "Produção",
       },
-    ],
-  },
-  {
-    id: "observability",
-    category: "Observabilidade & Monitoramento",
-    description:
-      "Instrumentação para garantir visibilidade operacional e detecção proativa de falhas.",
-    skills: [
       {
         name: "Logs Estruturados",
         context: "Padronização de logs com rastreabilidade de requisições e identificadores de lote.",
@@ -205,35 +218,6 @@ export const skillsData: SkillGroup[] = [
         level: "Produção & Integração",
         rating: 4,
         status: "Produção",
-      },
-    ],
-  },
-  {
-    id: "complementary",
-    category: "Aprendizado Complementar & Exploração",
-    description:
-      "Tecnologias estudadas ativamente para ampliação de repertório e versatilidade técnica.",
-    skills: [
-      {
-        name: "C# / .NET",
-        context: "Estudo de arquitetura orientada a objetos no ecossistema Microsoft e backend robusto.",
-        level: "Aprendizado Complementar",
-        rating: 3,
-        status: "Estudo",
-      },
-      {
-        name: "WPF (Windows Desktop)",
-        context: "Exploração de desenvolvimento desktop corporativo para utilitários de suporte operacional.",
-        level: "Aprendizado Complementar",
-        rating: 3,
-        status: "Estudo",
-      },
-      {
-        name: "Golang",
-        context: "Prática em concorrência (goroutines/canais) e cache geoespacial com Redis no projeto prático Move Fast.",
-        level: "Aprendizado Complementar",
-        rating: 3,
-        status: "Estudo",
       },
     ],
   },

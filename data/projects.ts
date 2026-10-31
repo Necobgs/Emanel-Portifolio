@@ -52,7 +52,6 @@ export const projectsData: ProjectDetail[] = [
     category: "Backend & Orquestração",
     status: "Em Produção",
     featured: true,
-    starred: true,
     isConfidential: true,
     metrics: [
       {
@@ -122,7 +121,6 @@ export const projectsData: ProjectDetail[] = [
     category: "RPA & Automação",
     status: "Em Produção",
     featured: true,
-    starred: true,
     isConfidential: true,
     metrics: [
       {
@@ -293,112 +291,6 @@ export const projectsData: ProjectDetail[] = [
       "Gerenciamento atômico de chaves e TTL em cache distribuído.",
     ],
     techStack: ["Go", "Redis", "Docker", "Geolocalização", "APIs REST"],
-  },
-  {
-    slug: "gestao-instituto-diomicio-freitas",
-    title: "Sistema de Gestão Interna para o Instituto Diomício Freitas",
-    tagline:
-      "Backend modular em NestJS e PostgreSQL desenvolvido para a ONG IEEDF.",
-    summary:
-      "Projeto social desenvolvido em parceria com a ESUCRI para centralizar os registros acadêmicos e assistenciais dos alunos do Instituto Diomício Freitas, eliminando planilhas manuais e inconsistências.",
-    category: "Backend & Orquestração",
-    status: "Concluído",
-    featured: true,
-    githubUrl: "https://github.com/Necobgs/instituto-diomicio-freitas-backend",
-    context:
-      "O Instituto Diomício Freitas atende alunos com necessidades especiais e gerenciava informações de forma descentralizada em planilhas, dificultando o acompanhamento pedagógico e assistencial.",
-    problem:
-      "Inconsistências em registros de matrícula, histórico de atendimentos disperso e retrabalho manual para consolidar dados exigidos por órgãos conveniados.",
-    objective:
-      "Desenvolver um backend centralizado, seguro e auditável para organizar o cadastro e histórico pedagógico dos alunos da instituição.",
-    solution:
-      "API desenvolvida em NestJS com TypeScript e PostgreSQL. Facilitando a gestão do instituto com os alunos, podendo gerar relatórios e manter um histórico de encaminhamentos dos alunos para as empresas.",
-    contribution:
-      "Arquitetura do backend em NestJS, modelagem das entidades relacionais no PostgreSQL, implementação da camada de autenticação/autorização e entrega do código em repositório aberto.",
-    architectureHighlights: [
-      "Arquitetura modular em NestJS com validação de dados via DTOs",
-      "Modelagem relacional e integridade transacional no PostgreSQL",
-      "Controle de acesso seguro e histórico auditável de alterações",
-      "Código fonte 100% aberto e auditável no GitHub",
-    ],
-    technicalDecisions: [
-      {
-        title: "NestJS & TypeScript",
-        rationale:
-          "Proporcionou uma estrutura corporativa robusta com injeção de dependência e tipagem estrita de contratos de dados.",
-      },
-      {
-        title: "PostgreSQL Transacional",
-        rationale:
-          "Garantia de integridade referencial para dados acadêmicos e históricos de atendimento sensíveis.",
-      },
-    ],
-    challengesAndLearnings: [
-      "Mapeamento de requisitos com usuários reais da ONG para atender necessidades práticas do balcão de atendimento.",
-      "Estruturação de consultas eficientes com relacionamentos múltiplos em banco relacional.",
-    ],
-    techStack: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Docker"],
-    diagramType: "orchestration",
-  },
-  {
-    slug: "gerenciador-desktop-salao",
-    title: "Gerenciador Desktop para Salão de Beleza & Estética",
-    tagline:
-      "Aplicação desktop corporativa em C#, WPF, biblioteca WPF UI e banco SQLite local.",
-    summary:
-      "Projeto pessoal desenvolvido para pequenas empresas de serviços, focado em agilidade operacional, interface moderna com Fluent Design e persistência local 100% offline.",
-    category: "Desktop & .NET",
-    status: "Em Desenvolvimento",
-    featured: true,
-    context:
-      "Pequenos estabelecimentos comerciais costumam controlar seus agendamentos, fichas de clientes e serviços em anotações manuais ou planilhas suscetíveis a inconsistências.",
-    problem:
-      "Dificuldade de controle rápido no balcão de atendimento, falta de histórico centralizado de clientes e dependência de ferramentas lentas ou com mensalidades inviáveis para negócios iniciantes.",
-    objective:
-      "Desenvolver um software desktop leve, intuitivo, esteticamente refinado e com operação totalmente local sem dependência de internet para consultas de rotina, possuindo um design elegante, moderno e com módulos coesos com a necessidade do salão de beleza Karla Borges",
-    solution:
-      "Aplicação desktop desenvolvido com baixo custo de hardware e zero custo mensal(sem servidores, bancos de dados ou backup em nuvem), com módulos coesos com a necessidade do salão de beleza Karla Borges, como integração com o calendário do iphone para poder gerenciar a agenda de clientes tanto no computador quanto no iphone, tendo sincronização de 30 em 30 segundos enquanto possui a aplicação aberta.",
-    contribution:
-      "Concepção completa do projeto: levantamento de requisitos, arquitetura em camadas (Views, ViewModels, Services), modelagem do schema relacional e implementação de testes locais.",
-    architectureHighlights: [
-      "Arquitetura MVVM pura com CommunityToolkit.Mvvm para desacoplamento",
-      "Interface moderna e limpa construída com WPF UI e Fluent Design",
-      "Persistência local leve e portátil em SQLite via Entity Framework Core",
-      "Injeção de dependência nativa do Microsoft.Extensions.DependencyInjection",
-      "Tratamento defensivo para validações de formulário e consistência local",
-    ],
-    technicalDecisions: [
-      {
-        title: "Adoção do Padrão MVVM",
-        rationale:
-          "Permitiu isolar completamente a lógica de manipulação de dados dos arquivos XAML, facilitando testes unitários e manutenções visuais.",
-      },
-      {
-        title: "SQLite Embarcado",
-        rationale:
-          "Eliminou a necessidade de instalar servidores de banco de dados pesados nas máquinas dos clientes, tornando o instalador simples e portátil.",
-      },
-      {
-        title: "WPF UI para Fluent Design",
-        rationale:
-          "Proporcionou uma experiência de usuário contemporânea e profissional, superando a aparência tradicional e cinzenta de softwares desktop legados.",
-      },
-    ],
-    challengesAndLearnings: [
-      "Aprofundamento na sintaxe do XAML, data binding bidirecional e comandos assíncronos em aplicações de desktop.",
-      "Gerenciamento correto de conexões de contexto do Entity Framework Core em aplicações com interface de usuário reativa.",
-    ],
-    techStack: ["C#", ".NET", "WPF", "WPF UI", "SQLite", "Entity Framework Core", "MVVM"],
-    diagramType: "wpf-desktop",
-    plannedFeatures: [
-      "[Implementado] Cadastro e histórico detalhado de clientes e serviços",
-      "[Implementado] Interface moderna com WPF UI e suporte nativo a tema escuro",
-      "[Implementado] Persistência local em SQLite com transações seguras",
-      "[Planejado] Painel de agendamentos com visão de calendário interativa",
-      "[Planejado] Fechamento de comandas e cálculo de comissões por profissional",
-      "[Planejado] Exportação de relatórios operacionais em PDF e Excel",
-      "[Planejado] Mecanismo de backup e restauração automática do banco local",
-    ],
   },
 ];
 

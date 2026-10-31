@@ -160,7 +160,7 @@ body {
 /* Custom Cursor styling */
 @media (pointer: fine) {
   html.custom-cursor-enabled,
-  html.custom-cursor-enabled * {
+  html.custom-cursor-enabled *:not(input):not(textarea):not(select):not([contenteditable="true"]) {
     cursor: none !important;
   }
 }
@@ -247,6 +247,127 @@ body {
 .dark .cinematic-surface-amber:hover {
   border-color: rgba(245, 158, 11, 0.4);
   box-shadow: 0 12px 35px -10px rgba(245, 158, 11, 0.12);
+}
+
+/* ==========================================================================
+   Efeito Liquid Glass (Vidro Líquido Refinado & Refrativo)
+   ========================================================================== */
+
+/* Navbar Liquid Glass (Com Alto Contraste & Saturação Especular) */
+.liquid-glass-nav {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(241, 245, 249, 0.92) 100%
+  );
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.9);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1),
+    0 12px 35px -6px rgba(15, 23, 42, 0.08),
+    0 4px 12px -2px rgba(2, 132, 199, 0.06);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .liquid-glass-nav {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 24, 39, 0.88) 0%,
+    rgba(11, 17, 30, 0.92) 100%
+  );
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.6),
+    0 16px 45px -8px rgba(0, 0, 0, 0.8),
+    0 4px 20px -2px rgba(0, 242, 254, 0.1);
+}
+
+/* Estado da Navbar no Topo (Ainda distinto com efeito de vidro límpido) */
+.liquid-glass-nav-top {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .liquid-glass-nav-top {
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    0 8px 30px -6px rgba(0, 0, 0, 0.6);
+}
+
+/* Liquid Glass Pill (Cápsulas Flutuantes, Navegação Central e Dropdowns) */
+.liquid-glass-pill {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(241, 245, 249, 0.88) 100%
+  );
+  backdrop-filter: blur(18px) saturate(190%);
+  -webkit-backdrop-filter: blur(18px) saturate(190%);
+  border: 1px solid rgba(203, 213, 225, 0.95);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 2px 0 rgba(15, 23, 42, 0.06),
+    0 6px 20px -3px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .liquid-glass-pill {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.85) 0%,
+    rgba(15, 23, 42, 0.9) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.6),
+    0 8px 24px -4px rgba(0, 0, 0, 0.6),
+    0 0 16px -3px rgba(0, 242, 254, 0.15);
+}
+
+/* Liquid Glass Badge (Badges de Status com Bisel Vítreo Especular) */
+.liquid-glass-badge {
+  position: relative;
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05),
+    0 2px 10px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .liquid-glass-badge {
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
+    0 4px 14px -2px rgba(0, 0, 0, 0.45);
+}
+
+.liquid-glass-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.95),
+    0 6px 18px -2px rgba(2, 132, 199, 0.2);
+}
+
+.dark .liquid-glass-badge:hover {
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
+    0 6px 20px -2px rgba(0, 242, 254, 0.28);
 }
 
 /* Marcador técnico de vértice estilo cruz (+) */

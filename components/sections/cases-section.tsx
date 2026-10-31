@@ -13,7 +13,6 @@ export function CasesSection() {
     "Todos",
     "Backend & Orquestração",
     "RPA & Automação",
-    "Desktop & .NET",
   ];
 
   const filteredProjects =

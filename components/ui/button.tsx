@@ -42,7 +42,7 @@ export function Button({
 
   const variantStyles = {
     primary:
-      "bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 text-[#06080f] font-bold border border-cyan-400/40 shadow-[0_0_18px_rgba(0,242,254,0.22)] hover:shadow-[0_0_26px_rgba(0,242,254,0.38)] hover:brightness-105",
+      "bg-gradient-to-r from-cyan-600 via-sky-500 to-blue-600 text-white font-bold border border-cyan-400/40 shadow-[0_0_20px_rgba(2,132,199,0.25)] dark:shadow-[0_0_25px_rgba(0,242,254,0.3)] hover:shadow-[0_0_32px_rgba(0,242,254,0.45)] hover:brightness-110",
     cyan:
       "bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold border border-cyan-400/50 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:brightness-105",
     secondary:

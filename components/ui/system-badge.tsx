@@ -16,16 +16,19 @@ export function SystemBadge({
 }: SystemBadgeProps) {
   const statusStyles = {
     active: {
-      dot: "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]",
-      wrapper: "bg-emerald-50 border-emerald-300 text-emerald-950 dark:bg-emerald-950/60 dark:border-emerald-500/40 dark:text-emerald-200",
+      dot: "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.9)]",
+      wrapper:
+        "bg-emerald-500/10 border-emerald-400/40 text-emerald-950 dark:bg-emerald-500/15 dark:border-emerald-400/35 dark:text-emerald-200",
     },
     neutral: {
-      dot: "bg-cyan-500 shadow-[0_0_8px_rgba(0,242,254,0.6)]",
-      wrapper: "bg-cyan-50 border-cyan-300 text-cyan-950 dark:bg-cyan-950/60 dark:border-cyan-500/40 dark:text-cyan-200",
+      dot: "bg-cyan-500 shadow-[0_0_10px_rgba(0,242,254,0.8)]",
+      wrapper:
+        "bg-cyan-500/10 border-cyan-400/40 text-cyan-950 dark:bg-cyan-500/15 dark:border-cyan-400/35 dark:text-cyan-200",
     },
     warning: {
-      dot: "bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]",
-      wrapper: "bg-amber-50 border-amber-300 text-amber-950 dark:bg-amber-950/60 dark:border-amber-500/40 dark:text-amber-200",
+      dot: "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.9)]",
+      wrapper:
+        "bg-amber-500/10 border-amber-400/40 text-amber-950 dark:bg-amber-500/15 dark:border-amber-400/35 dark:text-amber-200",
     },
   };
 
@@ -34,7 +37,7 @@ export function SystemBadge({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 px-2.5 py-1 rounded-full border font-mono text-[11px] select-none shadow-sm transition-colors",
+        "liquid-glass-badge inline-flex items-center gap-2 px-2.5 py-1 rounded-full border font-mono text-[11px] select-none",
         current.wrapper,
         className
       )}
@@ -45,7 +48,7 @@ export function SystemBadge({
         )}
         <span className={cn("relative inline-flex rounded-full h-2 w-2", current.dot)} />
       </span>
-      {code && <span className="text-slate-800 dark:text-slate-100 font-semibold">{code}</span>}
+      {code && <span className="font-semibold tracking-tight">{code}</span>}
     </div>
   );
 }

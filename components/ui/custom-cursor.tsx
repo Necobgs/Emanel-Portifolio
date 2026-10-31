@@ -45,6 +45,7 @@ export function CustomCursor() {
     let mouseY = -100;
     let ringX = -100;
     let ringY = -100;
+    let ringScale = 1;
     let isVisible = false;
     let isHovering = false;
     let isClicking = false;
@@ -71,8 +72,18 @@ export function CustomCursor() {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
+      const isInput = target.closest("input, textarea, [contenteditable='true']");
+      if (isInput) {
+        if (dotRef.current) dotRef.current.style.opacity = "0";
+        if (ringRef.current) ringRef.current.style.opacity = "0";
+        return;
+      } else if (isVisible) {
+        if (dotRef.current) dotRef.current.style.opacity = "1";
+        if (ringRef.current) ringRef.current.style.opacity = "1";
+      }
+
       const interactive = target.closest(
-        'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="interactive"]'
+        'a, button, [role="button"], label, summary, [data-cursor="interactive"]'
       );
       isHovering = !!interactive;
     };
@@ -97,16 +108,19 @@ export function CustomCursor() {
       if (ringRef.current) ringRef.current.style.opacity = "1";
     };
 
-    // Loop fluido via requestAnimationFrame com interpolação LERP para o anel seguidor
+    // Loop de renderização com acompanhamento dinâmico, ágil e sem latência
     const loop = () => {
       if (isVisible) {
-        // Interpolação suave do anel externo
-        ringX += (mouseX - ringX) * 0.18;
-        ringY += (mouseY - ringY) * 0.18;
+        // Interpolação ágil do anel externo (acompanha de perto sem arrasto lento)
+        const followSpeed = 0.45;
+        ringX += (mouseX - ringX) * followSpeed;
+        ringY += (mouseY - ringY) * followSpeed;
+
+        const targetScale = isClicking ? 0.75 : isHovering ? 1.4 : 1;
+        ringScale += (targetScale - ringScale) * 0.22;
 
         if (ringRef.current) {
-          const scale = isClicking ? 0.75 : isHovering ? 1.55 : 1;
-          ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${scale})`;
+          ringRef.current.style.transform = `translate3d(${ringX.toFixed(2)}px, ${ringY.toFixed(2)}px, 0) translate(-50%, -50%) scale(${ringScale.toFixed(3)})`;
         }
       }
       animId = requestAnimationFrame(loop);
@@ -140,12 +154,12 @@ export function CustomCursor() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden select-none"
     >
-      {/* Anel seguidor com atenuação suave */}
+      {/* Anel seguidor técnico ultra nítido - 100% transparente, sem blur e com resposta imediata */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-cyan-500/50 dark:border-cyan-400/60 bg-cyan-500/10 dark:bg-cyan-400/10 backdrop-blur-[1px] shadow-[0_0_15px_rgba(2,132,199,0.2)] dark:shadow-[0_0_18px_rgba(0,242,254,0.3)] opacity-0 transition-opacity duration-200 will-change-transform"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-cyan-500/40 dark:border-cyan-400/50 bg-transparent opacity-0 transition-opacity duration-200 will-change-transform"
         style={{
-          transitionProperty: "opacity, border-color, background-color",
+          transitionProperty: "opacity, border-color",
           transitionDuration: "180ms",
         }}
       />
@@ -153,7 +167,7 @@ export function CustomCursor() {
       {/* Ponto central instantâneo de alta precisão */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-cyan-600 dark:bg-cyan-300 shadow-[0_0_8px_rgba(2,132,199,0.8)] dark:shadow-[0_0_10px_rgba(0,242,254,0.9)] opacity-0 transition-opacity duration-150 will-change-transform"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-cyan-600 dark:bg-cyan-300 shadow-[0_0_4px_rgba(0,242,254,0.5)] opacity-0 transition-opacity duration-150 will-change-transform"
       />
     </div>
   );
